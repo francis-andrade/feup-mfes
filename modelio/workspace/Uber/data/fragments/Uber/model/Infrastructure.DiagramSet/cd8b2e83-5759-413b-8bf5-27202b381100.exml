@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Uber" version="4">
+  <OBJECT>
+    <ID name="Uber" mc="Infrastructure.DiagramSet" uid="cd8b2e83-5759-413b-8bf5-27202b381100"/>
+    <PID name="Uber" mc="Standard.Project" uid="8669463e-3e4e-480a-9dca-92ba4e34ce2e"/>
+    <ATTRIBUTES>
+      <ATT name="Name"><![CDATA[Uber]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>
