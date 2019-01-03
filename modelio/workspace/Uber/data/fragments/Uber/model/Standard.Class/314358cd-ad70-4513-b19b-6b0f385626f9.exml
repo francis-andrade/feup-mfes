@@ -15,32 +15,6 @@
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
     <DEPENDENCIES>
-      <COMP relation="OwnedAttribute">
-        <OBJECT>
-          <ID name="Date" mc="Standard.Attribute" uid="e7730f9a-9ee7-488c-a240-885390fc95de"/>
-          <ATTRIBUTES>
-            <ATT name="TypeConstraint"></ATT>
-            <ATT name="Value"></ATT>
-            <ATT name="TargetIsClass">false</ATT>
-            <ATT name="Changeable">ReadWrite</ATT>
-            <ATT name="IsDerived">false</ATT>
-            <ATT name="IsOrdered">false</ATT>
-            <ATT name="IsUnique">false</ATT>
-            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
-            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
-            <ATT name="Visibility">Public</ATT>
-            <ATT name="IsClass">false</ATT>
-            <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[Date]]></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <LINK relation="Type">
-              <FOREIGNID name="date" mc="Standard.DataType" uid="00000004-0000-0014-0000-000000000000"/>
-            </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
-      </COMP>
       <COMP relation="OwnedEnd">
         <OBJECT>
           <ID name="" mc="Standard.AssociationEnd" uid="cf8d7a8c-43ef-4381-b4f6-80323be6dc38"/>
@@ -104,7 +78,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="End" mc="Standard.AssociationEnd" uid="052e6bbb-1600-42b4-9d71-a062ce26461a"/>
+          <ID name="EndLocation" mc="Standard.AssociationEnd" uid="052e6bbb-1600-42b4-9d71-a062ce26461a"/>
           <ATTRIBUTES>
             <ATT name="Aggregation">KindIsAssociation</ATT>
             <ATT name="IsChangeable">true</ATT>
@@ -117,7 +91,7 @@
             <ATT name="Visibility">Public</ATT>
             <ATT name="IsClass">false</ATT>
             <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[End]]></ATT>
+            <ATT name="Name"><![CDATA[EndLocation]]></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
@@ -144,7 +118,7 @@
                 </ATTRIBUTES>
                 <DEPENDENCIES>
                   <COMP relation="Opposite">
-                    <COMPID name="End" mc="Standard.AssociationEnd" uid="052e6bbb-1600-42b4-9d71-a062ce26461a"/>
+                    <COMPID name="EndLocation" mc="Standard.AssociationEnd" uid="052e6bbb-1600-42b4-9d71-a062ce26461a"/>
                   </COMP>
                   <COMP relation="Association">
                     <OBJECT>
@@ -162,10 +136,23 @@
             <COMP relation="Association">
               <COMPID name="" mc="Standard.Association" uid="c92f3b96-0a38-4f95-b920-e059e49306ff"/>
             </COMP>
+            <COMP relation="ConstraintDefinition">
+              <OBJECT>
+                <ID name="disjoint" mc="Standard.Constraint" uid="6541f0d2-d5de-45e8-9cfb-a16f69e80dad"/>
+                <ATTRIBUTES>
+                  <ATT name="BaseClass"></ATT>
+                  <ATT name="Body"></ATT>
+                  <ATT name="Language"></ATT>
+                  <ATT name="Name"><![CDATA[disjoint]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+            </COMP>
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="Start" mc="Standard.AssociationEnd" uid="0abf16b5-af91-45e4-801c-f6eabffd9bd7"/>
+          <ID name="StartLocation" mc="Standard.AssociationEnd" uid="0abf16b5-af91-45e4-801c-f6eabffd9bd7"/>
           <ATTRIBUTES>
             <ATT name="Aggregation">KindIsAssociation</ATT>
             <ATT name="IsChangeable">true</ATT>
@@ -178,7 +165,7 @@
             <ATT name="Visibility">Public</ATT>
             <ATT name="IsClass">false</ATT>
             <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[Start]]></ATT>
+            <ATT name="Name"><![CDATA[StartLocation]]></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
@@ -205,7 +192,7 @@
                 </ATTRIBUTES>
                 <DEPENDENCIES>
                   <COMP relation="Opposite">
-                    <COMPID name="Start" mc="Standard.AssociationEnd" uid="0abf16b5-af91-45e4-801c-f6eabffd9bd7"/>
+                    <COMPID name="StartLocation" mc="Standard.AssociationEnd" uid="0abf16b5-af91-45e4-801c-f6eabffd9bd7"/>
                   </COMP>
                   <COMP relation="Association">
                     <OBJECT>
@@ -222,6 +209,9 @@
             </COMP>
             <COMP relation="Association">
               <COMPID name="" mc="Standard.Association" uid="b80845f2-898a-496c-8f13-4e1d5eb15bc6"/>
+            </COMP>
+            <COMP relation="ConstraintDefinition">
+              <COMPID name="disjoint" mc="Standard.Constraint" uid="6541f0d2-d5de-45e8-9cfb-a16f69e80dad"/>
             </COMP>
           </DEPENDENCIES>
         </OBJECT>
@@ -283,6 +273,144 @@
             </COMP>
             <COMP relation="Association">
               <COMPID name="" mc="Standard.Association" uid="2de51dea-8031-4b00-8abd-e2972b3d4630"/>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="EndTime" mc="Standard.AssociationEnd" uid="737eece4-8058-492b-9611-9542ed6d9a02"/>
+          <ATTRIBUTES>
+            <ATT name="Aggregation">KindIsAssociation</ATT>
+            <ATT name="IsChangeable">true</ATT>
+            <ATT name="Changeable">ReadWrite</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[EndTime]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Target">
+              <ID name="Timestamp" mc="Standard.Class" uid="08d306f3-3243-44b0-82c0-90d6b8b348a8"/>
+            </LINK>
+            <COMP relation="Opposite">
+              <OBJECT>
+                <ID name="" mc="Standard.AssociationEnd" uid="920146a8-39b0-46e3-8cc7-92542e148a60"/>
+                <ATTRIBUTES>
+                  <ATT name="Aggregation">KindIsAssociation</ATT>
+                  <ATT name="IsChangeable">true</ATT>
+                  <ATT name="Changeable">ReadWrite</ATT>
+                  <ATT name="IsDerived">false</ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[0]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[*]]></ATT>
+                  <ATT name="Visibility">Public</ATT>
+                  <ATT name="IsClass">false</ATT>
+                  <ATT name="IsAbstract">false</ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <COMP relation="Opposite">
+                    <COMPID name="EndTime" mc="Standard.AssociationEnd" uid="737eece4-8058-492b-9611-9542ed6d9a02"/>
+                  </COMP>
+                  <COMP relation="Association">
+                    <OBJECT>
+                      <ID name="" mc="Standard.Association" uid="0ae761f2-602f-44f7-a5d9-67da9aa15ee5"/>
+                      <ATTRIBUTES>
+                        <ATT name="Name"></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES></DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Association">
+              <COMPID name="" mc="Standard.Association" uid="0ae761f2-602f-44f7-a5d9-67da9aa15ee5"/>
+            </COMP>
+            <COMP relation="ConstraintDefinition">
+              <OBJECT>
+                <ID name="EndTime &gt; StartTime" mc="Standard.Constraint" uid="c24d2633-df86-4039-9cb0-95e2758fafb2"/>
+                <ATTRIBUTES>
+                  <ATT name="BaseClass"></ATT>
+                  <ATT name="Body"></ATT>
+                  <ATT name="Language"></ATT>
+                  <ATT name="Name"><![CDATA[EndTime > StartTime]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="StartTime" mc="Standard.AssociationEnd" uid="49448abd-e4e0-47db-b827-1a4ae6b8aabd"/>
+          <ATTRIBUTES>
+            <ATT name="Aggregation">KindIsAssociation</ATT>
+            <ATT name="IsChangeable">true</ATT>
+            <ATT name="Changeable">ReadWrite</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[StartTime]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Target">
+              <ID name="Timestamp" mc="Standard.Class" uid="08d306f3-3243-44b0-82c0-90d6b8b348a8"/>
+            </LINK>
+            <COMP relation="Opposite">
+              <OBJECT>
+                <ID name="" mc="Standard.AssociationEnd" uid="e2d4696c-8cda-4dcb-aeb9-467fcd8802b5"/>
+                <ATTRIBUTES>
+                  <ATT name="Aggregation">KindIsAssociation</ATT>
+                  <ATT name="IsChangeable">true</ATT>
+                  <ATT name="Changeable">ReadWrite</ATT>
+                  <ATT name="IsDerived">false</ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[0]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[*]]></ATT>
+                  <ATT name="Visibility">Public</ATT>
+                  <ATT name="IsClass">false</ATT>
+                  <ATT name="IsAbstract">false</ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <COMP relation="Opposite">
+                    <COMPID name="StartTime" mc="Standard.AssociationEnd" uid="49448abd-e4e0-47db-b827-1a4ae6b8aabd"/>
+                  </COMP>
+                  <COMP relation="Association">
+                    <OBJECT>
+                      <ID name="" mc="Standard.Association" uid="0f98b281-305c-45e7-88ea-6e119c32bba0"/>
+                      <ATTRIBUTES>
+                        <ATT name="Name"></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES></DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Association">
+              <COMPID name="" mc="Standard.Association" uid="0f98b281-305c-45e7-88ea-6e119c32bba0"/>
+            </COMP>
+            <COMP relation="ConstraintDefinition">
+              <COMPID name="EndTime &gt; StartTime" mc="Standard.Constraint" uid="c24d2633-df86-4039-9cb0-95e2758fafb2"/>
             </COMP>
           </DEPENDENCIES>
         </OBJECT>
