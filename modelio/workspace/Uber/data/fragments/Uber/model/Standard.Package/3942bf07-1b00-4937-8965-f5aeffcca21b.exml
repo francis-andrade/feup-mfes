@@ -31,6 +31,10 @@
         <COMPID name="Add Driver" mc="Standard.UseCase" uid="02005ff7-efb7-443c-80f5-7c3ae04b70ac"/>
         <COMPID name="Remove Driver" mc="Standard.UseCase" uid="c472f220-d4f8-4fce-bf05-86befea734da"/>
         <COMPID name="Remove Client" mc="Standard.UseCase" uid="10efeef0-061d-4ff2-a72c-9aa15bee6355"/>
+        <COMPID name="Uber" mc="Standard.Class" uid="f4118beb-4909-454c-a3f9-b1a108482859"/>
+        <COMPID name="Driver" mc="Standard.Class" uid="f9c07fdd-052d-4143-981e-207de4a5c38f"/>
+        <COMPID name="User" mc="Standard.Class" uid="b1f510d5-5c9f-4cfd-b0ec-d009490f8c11"/>
+        <COMPID name="Admin" mc="Standard.Class" uid="1af61ead-c0c8-4ba2-8fff-7cde9cbdf06e"/>
       </COMP>
       <COMP relation="Product">
         <COMPID name="uber Class diagram" mc="Standard.ClassDiagram" uid="e43353cd-7c35-4beb-99ff-2e613ccabd52"/>
