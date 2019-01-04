@@ -11,7 +11,6 @@ values
 instance variables
 	public drivers: set of Driver := {};
 	public clients: set of Client := {};
-	public admins: set of Admin := {};
 
 operations
 -- TODO Define operations here

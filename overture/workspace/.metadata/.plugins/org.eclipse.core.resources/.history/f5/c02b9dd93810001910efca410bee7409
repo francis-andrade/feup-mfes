@@ -5,13 +5,14 @@ types
 values
 -- TODO Define values here
 instance variables
-	public rating: rat := 5;
-	public status: Status := <Ready>;
+	public Rating: rat := 5;
+	
 
 operations
-	public Client : String ==> Client
-		Client(nm) == (
+	public Product : ProductName * ProductPrice ==> Product
+		Product(nm, pr) == (
 		name := nm;
+		price := pr;
 		return self
 	);
 

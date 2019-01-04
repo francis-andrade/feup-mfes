@@ -22,7 +22,7 @@ operations
 -- TODO Define operations here
 functions
 	public timeBetween(timeS:Timestamp, timeE:Timestamp) time:nat ==
-		
+		time = 0;
 		
 
 traces

@@ -1,22 +1,17 @@
-class Uber
+class Utils
 /*
-	Main instance class. The system has a set of clients, driver and admins, as well
-	as 
+	This class contains functions and types useful for abstraction and computation of operations.
 */
-
 types
 -- TODO Define types here
 values
 -- TODO Define values here
 instance variables
-	public drivers: set of Driver := {};
-	public clients: set of Client := {};
-	public admins: set of Admin := {};
-
+-- TODO Define instance variables here
 operations
 -- TODO Define operations here
 functions
 -- TODO Define functiones here
 traces
 -- TODO Define Combinatorial Test Traces here
-end Uber
+end Utils

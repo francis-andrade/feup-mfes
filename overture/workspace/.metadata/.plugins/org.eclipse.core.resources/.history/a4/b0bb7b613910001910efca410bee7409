@@ -9,9 +9,8 @@ types
 values
 -- TODO Define values here
 instance variables
-	public drivers: set of Driver := {};
-	public clients: set of Client := {};
-	public admins: set of Admin := {};
+	public drivers: set of Driver := [];
+	public clients: set of Client := [];
 
 operations
 -- TODO Define operations here

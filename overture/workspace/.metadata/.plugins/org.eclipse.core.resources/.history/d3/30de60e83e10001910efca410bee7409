@@ -21,9 +21,8 @@ instance variables
 operations
 -- TODO Define operations here
 functions
-	public timeBetween(timeS:Timestamp, timeE:Timestamp) time:nat ==
-		
-		
+	public timeBetween: Timestamp * Timestamp -> nat
+	
 
 traces
 -- TODO Define Combinatorial Test Traces here

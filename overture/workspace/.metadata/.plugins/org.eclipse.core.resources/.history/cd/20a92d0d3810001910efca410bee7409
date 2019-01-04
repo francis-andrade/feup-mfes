@@ -3,6 +3,6 @@ types
 	public String = seq of char;
 
 instance variables
-	public name: String :=[];
+	public name: String;
 
 end User

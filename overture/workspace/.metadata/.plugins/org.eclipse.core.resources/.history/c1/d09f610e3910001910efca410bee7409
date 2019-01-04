@@ -9,9 +9,10 @@ instance variables
 	public status: Status := <Ready>;
 
 operations
-	public Client : String ==> Client
-		Client(nm) == (
+	public Product : ProductName * ProductPrice ==> Product
+		Product(nm, pr) == (
 		name := nm;
+		price := pr;
 		return self
 	);
 

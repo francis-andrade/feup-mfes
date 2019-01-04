@@ -23,7 +23,6 @@ operations
 functions
 	public timeBetween(timeS:Timestamp, timeE:Timestamp) time:nat ==
 		
-		
 
 traces
 -- TODO Define Combinatorial Test Traces here

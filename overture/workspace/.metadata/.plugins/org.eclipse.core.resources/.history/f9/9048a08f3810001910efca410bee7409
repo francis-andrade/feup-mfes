@@ -1,21 +1,12 @@
 class Client is subclass of User
 types
-	public Status=<Ready> | <Waiting> | <InTransit>;
-
+-- TODO Define types here
 values
 -- TODO Define values here
 instance variables
-	public rating: rat := 5;
-	public status: Status := <Ready>;
-
+-- TODO Define instance variables here
 operations
-	public Client : String ==> Client
-		Client(nm) == (
-		name := nm;
-		return self
-	);
-
-
+-- TODO Define operations here
 functions
 -- TODO Define functiones here
 traces

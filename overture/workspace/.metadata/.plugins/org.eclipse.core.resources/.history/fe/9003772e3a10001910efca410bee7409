@@ -8,11 +8,7 @@ types
 											day: nat1
 											hour: nat1
 											minute: nat1
-											second: nat1;
-	
-	public Location :: latitude: nat
-										 longitude: nat
-										 country: seq1 of char;
+											second: nat1
 
 values
 -- TODO Define values here
@@ -21,10 +17,7 @@ instance variables
 operations
 -- TODO Define operations here
 functions
-	public timeBetween(timeS:Timestamp, timeE:Timestamp) time:nat ==
-		
-		
-
+-- TODO Define functiones here
 traces
 -- TODO Define Combinatorial Test Traces here
 end Utils
