@@ -7,3 +7,12 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64
 
 !ENTRY org.eclipse.ui.navigator 4 0 2019-01-04 15:03:10.686
 !MESSAGE Cannot find navigator content extension (using triggerPoints) for object "<null>" parent path: "P/Uber".  Check that you have an expression for this object in a navigatorContent triggerPoints or enablement.
+!SESSION 2019-01-04 16:55:56.428 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_191
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2019-01-04 16:56:04.548
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.

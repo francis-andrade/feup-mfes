@@ -3,7 +3,10 @@ class Utils
 	This class contains functions and types useful for abstraction and computation of operations.
 */
 types
-	public Timestamp ::	hour: nat1
+	public Timestamp ::	year: nat1
+											month: nat1
+											day: nat1
+											hour: nat1
 											minute: nat1
 											second: nat1;
 	
@@ -19,11 +22,7 @@ operations
 -- TODO Define operations here
 functions
 	public timeBetween(timeS:Timestamp, timeE:Timestamp) time:nat ==
-		time := (timeE.hour *1440 + timeE.minute * 60 + timeE.second) 
-					- (timeS.hour *1440 + timeS.minute * 60 + timeS.second)
-		pre timeE.hour > timeS.hour or (timeE.hour = timeS.hour and 
-					(timeE.minute > timeS.minute or (timeE.minute = timeS.minute 
-					and timeE.second > timeS.second)));
+		
 		
 
 traces

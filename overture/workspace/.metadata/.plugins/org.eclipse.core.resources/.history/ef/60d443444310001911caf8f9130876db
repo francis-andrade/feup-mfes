@@ -19,11 +19,11 @@ operations
 -- TODO Define operations here
 functions
 	public timeBetween(timeS:Timestamp, timeE:Timestamp) time:nat ==
-		time := (timeE.hour *1440 + timeE.minute * 60 + timeE.second) 
-					- (timeS.hour *1440 + timeS.minute * 60 + timeS.second)
-		pre timeE.hour > timeS.hour or (timeE.hour = timeS.hour and 
-					(timeE.minute > timeS.minute or (timeE.minute = timeS.minute 
-					and timeE.second > timeS.second)));
+		time = (timeE.hour *1440 + timeE`minute * 60 + timeE`second) 
+					- (timeS`hour *1440 + timeS`minute * 60 + timeS`second)
+		pre timeE`hour > timeS`hour or (timeE`hour = timeS`hour and 
+					(timeE`minute > timeS`minute or (timeE`minute = timeS`minute 
+					and timeE`second > timeS`second)));
 		
 
 traces

@@ -1,6 +1,6 @@
 class Client is subclass of User
 types
-	public Status = <Ready> | <Waiting> | <InTransit>;
+	public Status=<Ready> | <Waiting> | <InTransit>;
 
 values
 -- TODO Define values here
