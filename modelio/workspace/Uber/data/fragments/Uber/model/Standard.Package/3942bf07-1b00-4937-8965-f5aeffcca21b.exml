@@ -22,7 +22,6 @@
         <COMPID name="admin" mc="Standard.Actor" uid="76c911af-84b1-4e58-b8d4-c1b880a7a05b"/>
         <COMPID name="client" mc="Standard.Actor" uid="a5a9223b-7639-412a-ac92-eb86732e4f29"/>
         <COMPID name="driver" mc="Standard.Actor" uid="f1169817-cb2e-42ba-b45c-1e57093be6ef"/>
-        <COMPID name="Manage Uber" mc="Standard.UseCase" uid="406b1429-eda4-4daa-ab58-dad9e1627463"/>
         <COMPID name="Create Account" mc="Standard.UseCase" uid="0a72c823-f467-47e1-9df9-fcfb39b08248"/>
         <COMPID name="Ask for a Ride" mc="Standard.UseCase" uid="aba893b3-885e-4dde-8f15-7ec0bd1ab773"/>
         <COMPID name="Accept Ride" mc="Standard.UseCase" uid="2467e0db-0484-4151-b089-6f3a9dad2316"/>
@@ -37,6 +36,12 @@
         <COMPID name="Cancel" mc="Standard.UseCase" uid="e152cabb-f9e1-4cfc-b67e-d22cbb3ea88e"/>
         <COMPID name="Give Location" mc="Standard.UseCase" uid="f65fcbcc-058b-41c1-a6d6-90f0c98cb4bf"/>
         <COMPID name="Give Time" mc="Standard.UseCase" uid="a485b63e-5bbd-45a8-8726-2e6d2216620f"/>
+        <COMPID name="Enter Car" mc="Standard.UseCase" uid="1b6f3e90-2dd5-437b-a44b-097bdecbca4f"/>
+        <COMPID name="Travel to Location" mc="Standard.UseCase" uid="559b3124-27f7-467e-a610-0c92358c7c6c"/>
+        <COMPID name="Pick Up Passenger" mc="Standard.UseCase" uid="e94b6c88-bc1f-46c1-8dfe-ccca3b000956"/>
+        <COMPID name="Drop Off Passenger" mc="Standard.UseCase" uid="4222b905-a6f1-4721-b227-af5be503666f"/>
+        <COMPID name="Exit Car" mc="Standard.UseCase" uid="d029a1da-a157-4ee8-91fc-ffbe4aaad097"/>
+        <COMPID name="Generate Report" mc="Standard.UseCase" uid="e6d8e89d-2b4e-41d8-91c9-7e81b175a718"/>
       </COMP>
       <COMP relation="Product">
         <COMPID name="uber Class diagram" mc="Standard.ClassDiagram" uid="e43353cd-7c35-4beb-99ff-2e613ccabd52"/>

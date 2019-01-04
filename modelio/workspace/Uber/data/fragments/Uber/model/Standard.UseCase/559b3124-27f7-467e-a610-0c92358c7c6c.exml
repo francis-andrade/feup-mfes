@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Manage Uber" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Travel to Location" version="4">
   <OBJECT>
-    <ID name="Manage Uber" mc="Standard.UseCase" uid="406b1429-eda4-4daa-ab58-dad9e1627463"/>
+    <ID name="Travel to Location" mc="Standard.UseCase" uid="559b3124-27f7-467e-a610-0c92358c7c6c"/>
     <PID name="uber" mc="Standard.Package" uid="3942bf07-1b00-4937-8965-f5aeffcca21b"/>
     <ATTRIBUTES>
       <ATT name="IsElementary">false</ATT>
@@ -9,60 +9,13 @@
       <ATT name="IsLeaf">false</ATT>
       <ATT name="IsRoot">false</ATT>
       <ATT name="Visibility">Public</ATT>
-      <ATT name="Name"><![CDATA[Manage Uber]]></ATT>
+      <ATT name="Name"><![CDATA[Travel to Location]]></ATT>
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
     <DEPENDENCIES>
-      <COMP relation="Used">
-        <OBJECT>
-          <ID name="UseCaseDependency" mc="Standard.UseCaseDependency" uid="d27b02c0-42dd-42ac-b05d-4b988b1e6c6f"/>
-          <ATTRIBUTES>
-            <ATT name="Name"><![CDATA[UseCaseDependency]]></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <LINK relation="Target">
-              <ID name="Add Driver" mc="Standard.UseCase" uid="02005ff7-efb7-443c-80f5-7c3ae04b70ac"/>
-            </LINK>
-            <LINK relation="Extension">
-              <FOREIGNID name="include" mc="Infrastructure.Stereotype" uid="00000000-0000-9c49-0000-000000000000"/>
-            </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
-          <ID name="UseCaseDependency" mc="Standard.UseCaseDependency" uid="be415b0b-8de7-4a75-8e70-76eb31b7767d"/>
-          <ATTRIBUTES>
-            <ATT name="Name"><![CDATA[UseCaseDependency]]></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <LINK relation="Target">
-              <ID name="Remove Client" mc="Standard.UseCase" uid="10efeef0-061d-4ff2-a72c-9aa15bee6355"/>
-            </LINK>
-            <LINK relation="Extension">
-              <FOREIGNID name="include" mc="Infrastructure.Stereotype" uid="00000000-0000-9c49-0000-000000000000"/>
-            </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
-          <ID name="UseCaseDependency" mc="Standard.UseCaseDependency" uid="2ec74fd4-1f9a-47ea-9d36-8d6cbe3c1ec2"/>
-          <ATTRIBUTES>
-            <ATT name="Name"><![CDATA[UseCaseDependency]]></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <LINK relation="Target">
-              <ID name="Remove Driver" mc="Standard.UseCase" uid="c472f220-d4f8-4fce-bf05-86befea734da"/>
-            </LINK>
-            <LINK relation="Extension">
-              <FOREIGNID name="include" mc="Infrastructure.Stereotype" uid="00000000-0000-9c49-0000-000000000000"/>
-            </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
-      </COMP>
       <COMP relation="Descriptor">
         <OBJECT>
-          <ID name="" mc="Infrastructure.Note" uid="faf41ebf-f910-42bc-84a1-fd446e2f1444"/>
+          <ID name="" mc="Infrastructure.Note" uid="ff51edd8-190a-4137-8770-7f3ba86c95bf"/>
           <ATTRIBUTES>
             <ATT name="Content"><![CDATA[...]]></ATT>
             <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
@@ -76,7 +29,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="" mc="Infrastructure.Note" uid="f08b3561-396c-46b5-aac7-cbfbac24cb63"/>
+          <ID name="" mc="Infrastructure.Note" uid="0a441fed-d762-4c62-9d7c-e51d74747b3f"/>
           <ATTRIBUTES>
             <ATT name="Content"><![CDATA[...]]></ATT>
             <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
@@ -90,7 +43,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="" mc="Infrastructure.Note" uid="d98877db-627f-42f6-a447-f817fcdd8f12"/>
+          <ID name="" mc="Infrastructure.Note" uid="5baabf0d-95da-462d-a3e1-125d9d9851b6"/>
           <ATTRIBUTES>
             <ATT name="Content"><![CDATA[...]]></ATT>
             <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
@@ -104,7 +57,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="" mc="Infrastructure.Note" uid="5d5451f0-25fe-49be-bdf5-f81a274787ed"/>
+          <ID name="" mc="Infrastructure.Note" uid="c5e6c1c3-1507-4b96-b361-bd5047d40877"/>
           <ATTRIBUTES>
             <ATT name="Content"><![CDATA[...]]></ATT>
             <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
@@ -118,7 +71,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="" mc="Infrastructure.Note" uid="0523e770-010f-450f-b75e-3dd71d37fc33"/>
+          <ID name="" mc="Infrastructure.Note" uid="c9d4ae48-2383-4ddd-aa3e-2c3628fee243"/>
           <ATTRIBUTES>
             <ATT name="Content"><![CDATA[...]]></ATT>
             <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
