@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_WMU1EBAuEemFToHvq2p8oQ" name="uber">
+  <eAnnotations xmi:id="_WMU1ERAuEemFToHvq2p8oQ" source="Objing">
+    <contents xmi:type="uml:Property" xmi:id="_WMU1EhAuEemFToHvq2p8oQ" name="exporterVersion">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_WMU1ExAuEemFToHvq2p8oQ" value="3.0.0"/>
+    </contents>
+  </eAnnotations>
+  <ownedRule xmi:id="_WMU1FBAuEemFToHvq2p8oQ" name="disjoint" constrainedElement="_WMVcKhAuEemFToHvq2p8oQ _WMVcKxAuEemFToHvq2p8oQ">
+    <specification xmi:type="uml:LiteralString" xmi:id="_WMVcIBAuEemFToHvq2p8oQ" value=""/>
+  </ownedRule>
+  <ownedRule xmi:id="_WMVcIRAuEemFToHvq2p8oQ" name="EndTime > StartTime" constrainedElement="_WMVcLRAuEemFToHvq2p8oQ _WMVcLhAuEemFToHvq2p8oQ">
+    <specification xmi:type="uml:LiteralString" xmi:id="_WMVcIhAuEemFToHvq2p8oQ" value=""/>
+  </ownedRule>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WMVcIxAuEemFToHvq2p8oQ" name="Car">
+    <ownedAttribute xmi:id="_WMVcJBAuEemFToHvq2p8oQ" name="LicensePlate" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_WMVcJRAuEemFToHvq2p8oQ" name="Brand" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_WMVcJhAuEemFToHvq2p8oQ" name="Model" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_WMVcJxAuEemFToHvq2p8oQ" name="Speed" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WMVcKBAuEemFToHvq2p8oQ" name="Trip">
+    <ownedAttribute xmi:id="_WMVcKRAuEemFToHvq2p8oQ" visibility="public" type="_WMVcThAuEemFToHvq2p8oQ" association="_WMVcLxAuEemFToHvq2p8oQ"/>
+    <ownedAttribute xmi:id="_WMVcKhAuEemFToHvq2p8oQ" name="EndLocation" visibility="public" type="_WMVcUBAuEemFToHvq2p8oQ" association="_WMVcMRAuEemFToHvq2p8oQ"/>
+    <ownedAttribute xmi:id="_WMVcKxAuEemFToHvq2p8oQ" name="StartLocation" visibility="public" type="_WMVcUBAuEemFToHvq2p8oQ" association="_WMVcNRAuEemFToHvq2p8oQ"/>
+    <ownedAttribute xmi:id="_WMVcLBAuEemFToHvq2p8oQ" name="Vehicle" visibility="public" type="_WMVcIxAuEemFToHvq2p8oQ" association="_WMVcORAuEemFToHvq2p8oQ"/>
+    <ownedAttribute xmi:id="_WMVcLRAuEemFToHvq2p8oQ" name="EndTime" visibility="public" type="_WMVctxAuEemFToHvq2p8oQ" association="_WMVcPRAuEemFToHvq2p8oQ"/>
+    <ownedAttribute xmi:id="_WMVcLhAuEemFToHvq2p8oQ" name="StartTime" visibility="public" type="_WMVctxAuEemFToHvq2p8oQ" association="_WMVcQRAuEemFToHvq2p8oQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WMVcLxAuEemFToHvq2p8oQ" memberEnd="_WMVcKRAuEemFToHvq2p8oQ _WMVcMBAuEemFToHvq2p8oQ">
+    <ownedEnd xmi:id="_WMVcMBAuEemFToHvq2p8oQ" visibility="public" type="_WMVcKBAuEemFToHvq2p8oQ" association="_WMVcLxAuEemFToHvq2p8oQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WMVcMRAuEemFToHvq2p8oQ" memberEnd="_WMVcKhAuEemFToHvq2p8oQ _WMVcMhAuEemFToHvq2p8oQ">
+    <ownedEnd xmi:id="_WMVcMhAuEemFToHvq2p8oQ" visibility="public" type="_WMVcKBAuEemFToHvq2p8oQ" association="_WMVcMRAuEemFToHvq2p8oQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WMVcMxAuEemFToHvq2p8oQ" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WMVcNBAuEemFToHvq2p8oQ"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WMVcNRAuEemFToHvq2p8oQ" memberEnd="_WMVcKxAuEemFToHvq2p8oQ _WMVcNhAuEemFToHvq2p8oQ">
+    <ownedEnd xmi:id="_WMVcNhAuEemFToHvq2p8oQ" visibility="public" type="_WMVcKBAuEemFToHvq2p8oQ" association="_WMVcNRAuEemFToHvq2p8oQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WMVcNxAuEemFToHvq2p8oQ" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WMVcOBAuEemFToHvq2p8oQ"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WMVcORAuEemFToHvq2p8oQ" memberEnd="_WMVcLBAuEemFToHvq2p8oQ _WMVcOhAuEemFToHvq2p8oQ">
+    <ownedEnd xmi:id="_WMVcOhAuEemFToHvq2p8oQ" visibility="public" type="_WMVcKBAuEemFToHvq2p8oQ" association="_WMVcORAuEemFToHvq2p8oQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WMVcOxAuEemFToHvq2p8oQ" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WMVcPBAuEemFToHvq2p8oQ"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WMVcPRAuEemFToHvq2p8oQ" memberEnd="_WMVcLRAuEemFToHvq2p8oQ _WMVcPhAuEemFToHvq2p8oQ">
+    <ownedEnd xmi:id="_WMVcPhAuEemFToHvq2p8oQ" visibility="public" type="_WMVcKBAuEemFToHvq2p8oQ" association="_WMVcPRAuEemFToHvq2p8oQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WMVcPxAuEemFToHvq2p8oQ" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WMVcQBAuEemFToHvq2p8oQ"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WMVcQRAuEemFToHvq2p8oQ" memberEnd="_WMVcLhAuEemFToHvq2p8oQ _WMVcQhAuEemFToHvq2p8oQ">
+    <ownedEnd xmi:id="_WMVcQhAuEemFToHvq2p8oQ" visibility="public" type="_WMVcKBAuEemFToHvq2p8oQ" association="_WMVcQRAuEemFToHvq2p8oQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WMVcQxAuEemFToHvq2p8oQ" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WMVcRBAuEemFToHvq2p8oQ"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WMVcRRAuEemFToHvq2p8oQ" name="Client">
+    <generalization xmi:id="_WMVcRhAuEemFToHvq2p8oQ" general="_WMVcshAuEemFToHvq2p8oQ"/>
+    <ownedAttribute xmi:id="_WMVcRxAuEemFToHvq2p8oQ" visibility="public" type="_WMVcKBAuEemFToHvq2p8oQ" association="_WMVcTBAuEemFToHvq2p8oQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WMVcSBAuEemFToHvq2p8oQ" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WMVcSRAuEemFToHvq2p8oQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_WMVcShAuEemFToHvq2p8oQ" name="Rating" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_WMVcSxAuEemFToHvq2p8oQ" name="inATrip" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WMVcTBAuEemFToHvq2p8oQ" memberEnd="_WMVcRxAuEemFToHvq2p8oQ _WMVcTRAuEemFToHvq2p8oQ">
+    <ownedEnd xmi:id="_WMVcTRAuEemFToHvq2p8oQ" visibility="public" type="_WMVcRRAuEemFToHvq2p8oQ" association="_WMVcTBAuEemFToHvq2p8oQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WMVcThAuEemFToHvq2p8oQ" name="Report">
+    <ownedAttribute xmi:id="_WMVcTxAuEemFToHvq2p8oQ" name="Cost" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WMVcUBAuEemFToHvq2p8oQ" name="Location">
+    <ownedAttribute xmi:id="_WMVcURAuEemFToHvq2p8oQ" name="Latitude" visibility="public" isUnique="false">
+      <ownedComment xmi:id="_WMVcUhAuEemFToHvq2p8oQ">
+        <body>&lt;Enter note text here></body>
+      </ownedComment>
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_WMVcUxAuEemFToHvq2p8oQ" name="Longitude" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_WMVcVBAuEemFToHvq2p8oQ" name="Country" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_WMVcVRAuEemFToHvq2p8oQ" name="admin"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WMVcVhAuEemFToHvq2p8oQ" memberEnd="_WMVcVxAuEemFToHvq2p8oQ _WMVcWRAuEemFToHvq2p8oQ" navigableOwnedEnd="_WMVcVxAuEemFToHvq2p8oQ">
+    <ownedEnd xmi:id="_WMVcVxAuEemFToHvq2p8oQ" visibility="public" type="_WMVcbhAuEemFToHvq2p8oQ" association="_WMVcVhAuEemFToHvq2p8oQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WMVcWBAuEemFToHvq2p8oQ"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_WMVcWRAuEemFToHvq2p8oQ" visibility="public" type="_WMVcVRAuEemFToHvq2p8oQ" association="_WMVcVhAuEemFToHvq2p8oQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WMVcWhAuEemFToHvq2p8oQ"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_WMVcWxAuEemFToHvq2p8oQ" name="client">
+    <ownedComment xmi:id="_WMVcXBAuEemFToHvq2p8oQ">
+      <body>&lt;Enter note text here></body>
+    </ownedComment>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WMVcXRAuEemFToHvq2p8oQ" memberEnd="_WMVcXhAuEemFToHvq2p8oQ _WMVcYBAuEemFToHvq2p8oQ" navigableOwnedEnd="_WMVcXhAuEemFToHvq2p8oQ">
+    <ownedEnd xmi:id="_WMVcXhAuEemFToHvq2p8oQ" visibility="public" type="_WMVcdxAuEemFToHvq2p8oQ" association="_WMVcXRAuEemFToHvq2p8oQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WMVcXxAuEemFToHvq2p8oQ"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_WMVcYBAuEemFToHvq2p8oQ" visibility="public" type="_WMVcWxAuEemFToHvq2p8oQ" association="_WMVcXRAuEemFToHvq2p8oQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WMVcYRAuEemFToHvq2p8oQ"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WMVcYhAuEemFToHvq2p8oQ" memberEnd="_WMVcYxAuEemFToHvq2p8oQ _WMVcZRAuEemFToHvq2p8oQ" navigableOwnedEnd="_WMVcYxAuEemFToHvq2p8oQ">
+    <ownedEnd xmi:id="_WMVcYxAuEemFToHvq2p8oQ" visibility="public" type="_WMVcfRAuEemFToHvq2p8oQ" association="_WMVcYhAuEemFToHvq2p8oQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WMVcZBAuEemFToHvq2p8oQ"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_WMVcZRAuEemFToHvq2p8oQ" visibility="public" type="_WMVcWxAuEemFToHvq2p8oQ" association="_WMVcYhAuEemFToHvq2p8oQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WMVcZhAuEemFToHvq2p8oQ"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_WMVcZxAuEemFToHvq2p8oQ" name="driver">
+    <ownedComment xmi:id="_WMVcaBAuEemFToHvq2p8oQ">
+      <body>&lt;Enter note text here></body>
+    </ownedComment>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WMVcaRAuEemFToHvq2p8oQ" memberEnd="_WMVcahAuEemFToHvq2p8oQ _WMVcbBAuEemFToHvq2p8oQ" navigableOwnedEnd="_WMVcahAuEemFToHvq2p8oQ">
+    <ownedEnd xmi:id="_WMVcahAuEemFToHvq2p8oQ" visibility="public" type="_WMVchRAuEemFToHvq2p8oQ" association="_WMVcaRAuEemFToHvq2p8oQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WMVcaxAuEemFToHvq2p8oQ"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_WMVcbBAuEemFToHvq2p8oQ" visibility="public" type="_WMVcZxAuEemFToHvq2p8oQ" association="_WMVcaRAuEemFToHvq2p8oQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WMVcbRAuEemFToHvq2p8oQ"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_WMVcbhAuEemFToHvq2p8oQ" name="Manage Uber">
+    <ownedComment xmi:id="_WMVcbxAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVccBAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVccRAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcchAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVccxAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <include xmi:id="_WMVcdBAuEemFToHvq2p8oQ" name="UseCaseDependency" addition="_WMVcixAuEemFToHvq2p8oQ"/>
+    <include xmi:id="_WMVcdRAuEemFToHvq2p8oQ" name="UseCaseDependency" addition="_WMVclxAuEemFToHvq2p8oQ"/>
+    <include xmi:id="_WMVcdhAuEemFToHvq2p8oQ" name="UseCaseDependency" addition="_WMVckRAuEemFToHvq2p8oQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_WMVcdxAuEemFToHvq2p8oQ" name="Create Account">
+    <ownedComment xmi:id="_WMVceBAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVceRAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcehAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcexAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcfBAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_WMVcfRAuEemFToHvq2p8oQ" name="Ask for a Ride">
+    <ownedComment xmi:id="_WMVcfhAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcfxAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcgBAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcgRAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcghAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <include xmi:id="_WMVcgxAuEemFToHvq2p8oQ" name="UseCaseDependency" addition="_WMVcxBAuEemFToHvq2p8oQ"/>
+    <include xmi:id="_WMVchBAuEemFToHvq2p8oQ" name="UseCaseDependency" addition="_WMVcyhAuEemFToHvq2p8oQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_WMVchRAuEemFToHvq2p8oQ" name="Accept Ride">
+    <ownedComment xmi:id="_WMVchhAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVchxAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVciBAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVciRAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcihAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_WMVcixAuEemFToHvq2p8oQ" name="Add Driver">
+    <ownedComment xmi:id="_WMVcjBAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcjRAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcjhAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcjxAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVckBAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_WMVckRAuEemFToHvq2p8oQ" name="Remove Driver">
+    <ownedComment xmi:id="_WMVckhAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVckxAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVclBAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVclRAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVclhAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_WMVclxAuEemFToHvq2p8oQ" name="Remove Client">
+    <ownedComment xmi:id="_WMVcmBAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcmRAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcmhAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcmxAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcnBAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WMVcnRAuEemFToHvq2p8oQ" name="Uber" isLeaf="true">
+    <ownedAttribute xmi:id="_WMVcnhAuEemFToHvq2p8oQ" name="client" visibility="public" type="_WMVcRRAuEemFToHvq2p8oQ" association="_WMVcoxAuEemFToHvq2p8oQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WMVcnxAuEemFToHvq2p8oQ" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_WMVcoBAuEemFToHvq2p8oQ" name="driver" visibility="public" type="_WMVcqRAuEemFToHvq2p8oQ" association="_WMVcpRAuEemFToHvq2p8oQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WMVcoRAuEemFToHvq2p8oQ" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_WMVcohAuEemFToHvq2p8oQ" name="admin" visibility="public" type="_WMVctRAuEemFToHvq2p8oQ" association="_WMVcpxAuEemFToHvq2p8oQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WMVcoxAuEemFToHvq2p8oQ" memberEnd="_WMVcnhAuEemFToHvq2p8oQ _WMVcpBAuEemFToHvq2p8oQ">
+    <ownedEnd xmi:id="_WMVcpBAuEemFToHvq2p8oQ" visibility="public" type="_WMVcnRAuEemFToHvq2p8oQ" association="_WMVcoxAuEemFToHvq2p8oQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WMVcpRAuEemFToHvq2p8oQ" memberEnd="_WMVcoBAuEemFToHvq2p8oQ _WMVcphAuEemFToHvq2p8oQ">
+    <ownedEnd xmi:id="_WMVcphAuEemFToHvq2p8oQ" visibility="public" type="_WMVcnRAuEemFToHvq2p8oQ" association="_WMVcpRAuEemFToHvq2p8oQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WMVcpxAuEemFToHvq2p8oQ" memberEnd="_WMVcohAuEemFToHvq2p8oQ _WMVcqBAuEemFToHvq2p8oQ">
+    <ownedEnd xmi:id="_WMVcqBAuEemFToHvq2p8oQ" visibility="public" type="_WMVcnRAuEemFToHvq2p8oQ" association="_WMVcpxAuEemFToHvq2p8oQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WMVcqRAuEemFToHvq2p8oQ" name="Driver">
+    <generalization xmi:id="_WMVcqhAuEemFToHvq2p8oQ" general="_WMVcshAuEemFToHvq2p8oQ"/>
+    <ownedAttribute xmi:id="_WMVcqxAuEemFToHvq2p8oQ" name="car" visibility="public" type="_WMVcIxAuEemFToHvq2p8oQ" association="_WMVcrxAuEemFToHvq2p8oQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WMVcrBAuEemFToHvq2p8oQ" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_WMVcrRAuEemFToHvq2p8oQ" name="Rating" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_WMVcrhAuEemFToHvq2p8oQ" name="inATrip" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WMVcrxAuEemFToHvq2p8oQ" memberEnd="_WMVcqxAuEemFToHvq2p8oQ _WMVcsBAuEemFToHvq2p8oQ">
+    <ownedEnd xmi:id="_WMVcsBAuEemFToHvq2p8oQ" visibility="public" type="_WMVcqRAuEemFToHvq2p8oQ" association="_WMVcrxAuEemFToHvq2p8oQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WMVcsRAuEemFToHvq2p8oQ" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WMVcshAuEemFToHvq2p8oQ" name="User">
+    <ownedAttribute xmi:id="_WMVcsxAuEemFToHvq2p8oQ" name="username" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_WMVctBAuEemFToHvq2p8oQ" name="name" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WMVctRAuEemFToHvq2p8oQ" name="Admin">
+    <generalization xmi:id="_WMVcthAuEemFToHvq2p8oQ" general="_WMVcshAuEemFToHvq2p8oQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WMVctxAuEemFToHvq2p8oQ" name="Timestamp">
+    <ownedComment xmi:id="_WMVcuBAuEemFToHvq2p8oQ">
+      <body>&lt;Enter note text here></body>
+    </ownedComment>
+    <ownedAttribute xmi:id="_WMVcuRAuEemFToHvq2p8oQ" name="day" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_WMVcuhAuEemFToHvq2p8oQ" name="hour" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_WMVcuxAuEemFToHvq2p8oQ" name="minute" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_WMVcvBAuEemFToHvq2p8oQ" name="second" visibility="public" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_WMVcvRAuEemFToHvq2p8oQ" name="Cancel">
+    <ownedComment xmi:id="_WMVcvhAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcvxAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcwBAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcwRAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcwhAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <extend xmi:id="_WMVcwxAuEemFToHvq2p8oQ" name="UseCaseDependency" extendedCase="_WMVcfRAuEemFToHvq2p8oQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_WMVcxBAuEemFToHvq2p8oQ" name="Give Location">
+    <ownedComment xmi:id="_WMVcxRAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcxhAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcxxAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcyBAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVcyRAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_WMVcyhAuEemFToHvq2p8oQ" name="Give Time">
+    <ownedComment xmi:id="_WMVcyxAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVczBAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVczRAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVczhAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+    <ownedComment xmi:id="_WMVczxAuEemFToHvq2p8oQ">
+      <body>...</body>
+    </ownedComment>
+  </packagedElement>
+</uml:Model>
