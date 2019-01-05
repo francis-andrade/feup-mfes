@@ -1,0 +1,27 @@
+class Client is subclass of User
+/*
+	A client is a user that requests rides.
+*/
+types
+	public Status = <Ready> | <Waiting> | <InTransit>;
+
+values
+-- TODO Define values here
+instance variables
+	public rating: rat := 5;
+	public status: Status := <Ready>;
+	public Utils:Location;
+
+operations
+	public Client : String ==> Client
+		Client(nm) == (
+			name := nm;
+			return self
+		);
+
+
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end Client

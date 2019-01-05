@@ -11,21 +11,13 @@ types
 										 longitude: nat
 										 country: seq1 of char;
 
-values
--- TODO Define values here
-instance variables
--- TODO Define instance variables here
-operations
--- TODO Define operations here
 functions
-	public timeBetween(timeS:Timestamp, timeE:Timestamp) time:nat ==
-		time := (timeE.hour *1440 + timeE.minute * 60 + timeE.second) 
-					- (timeS.hour *1440 + timeS.minute * 60 + timeS.second)
+	public timeBetween(timeS:Timestamp, timeE:Timestamp) time:nat
 		pre timeE.hour > timeS.hour or (timeE.hour = timeS.hour and 
 					(timeE.minute > timeS.minute or (timeE.minute = timeS.minute 
-					and timeE.second > timeS.second)));
+					and timeE.second > timeS.second)))
+		post 	time = (timeE.hour *1440 + timeE.minute * 60 + timeE.second) 
+					- (timeS.hour *1440 + timeS.minute * 60 + timeS.second);
+				
 		
-
-traces
--- TODO Define Combinatorial Test Traces here
 end Utils

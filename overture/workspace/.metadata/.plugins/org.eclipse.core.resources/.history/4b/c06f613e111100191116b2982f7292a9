@@ -1,0 +1,10 @@
+class Admin is subclass of User
+
+operations
+	public Client : String ==> Client
+		Client(nm) == (
+			name := nm;
+			return self
+		);
+
+end Admin

@@ -1,0 +1,24 @@
+class Driver is subclass of User
+types
+	public Status = <Ready> | <ReachingClient> | <InTransit>;
+
+
+values
+-- TODO Define values here
+instance variables
+	public rating: rat := 5;
+	public status: Status := <Ready>;
+	public speed: int;
+
+operations
+	public Client : String * nat ==> Client
+		Client(nm, spd) == (
+			name := nm;
+			return self
+		);
+
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end Driver

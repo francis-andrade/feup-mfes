@@ -1,0 +1,43 @@
+class Client is subclass of User
+/*
+	A client is a user that requests rides.
+*/
+types
+	public Status = <Ready> | <Waiting> | <InTransit>;
+
+values
+-- TODO Define values here
+instance variables
+	public rating: rat := 5;
+	public status: Status := <Ready>;
+	public location: Utils`Location;
+
+operations
+	public Client : String * nat * nat ==> Client
+		Client(nm, lat, lon) == (
+			name := nm;
+			location := mk_Utils`Location(lat, lon, "Portugal");
+			return self
+		);
+
+	/* Operations that change the Client's state */
+	public setReady: () ==> ()
+		setReady() ==
+		status := <Ready>
+		pre status = <InTransit> or status = <Waiting>;
+		
+	public setWaiting: () ==> ()
+		setWaiting() ==
+			status := <Waiting>
+			pre status = <Ready>;
+	
+	public setInTransit: () ==> ()
+		setInTransit() ==
+			status := <InTransit>
+			pre status = <Waiting>;
+
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end Client
