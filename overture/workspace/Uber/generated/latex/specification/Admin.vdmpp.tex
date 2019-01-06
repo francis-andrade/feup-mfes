@@ -1,7 +1,11 @@
+\begin{vdmpp}[breaklines=true]
 class Admin is subclass of User
 
 operations
     --creates an admin
+(*@
+\label{Admin:5}
+@*)
     public Admin : String ==> Admin
         Admin(nm) == (
             name := nm;
@@ -9,3 +13,4 @@ operations
         );
 
 end Admin
+\end{vdmpp}

@@ -1,3 +1,4 @@
+\begin{vdmpp}[breaklines=true]
 class Client is subclass of User
 /*
     A client is a user that requests rides.
@@ -13,6 +14,9 @@ instance variables
     public reports: set of Uber`Report := {};
 
 operations
+(*@
+\label{Client:16}
+@*)
   -- Client Constructor
     public Client : String * nat * nat ==> Client
         Client(nm, lat, lon) == (
@@ -21,21 +25,33 @@ operations
             return self
         );
 
+(*@
+\label{setReady:24}
+@*)
     -- Operations that change the Client's state
     public setReady: () ==> ()
         setReady() ==
         status := <Ready>
         pre status = <InTransit> or status = <Waiting>;
+(*@
+\label{setWaiting:29}
+@*)
         
     public setWaiting: () ==> ()
         setWaiting() ==
             status := <Waiting>
             pre status = <Ready>;
+(*@
+\label{setInTransit:34}
+@*)
     
     public setInTransit: () ==> ()
         setInTransit() ==
             status := <InTransit>
             pre status = <Waiting>;
+(*@
+\label{addReport:39}
+@*)
     
     -- adds a report to their report set
     public addReport: Uber`Report ==> ()
@@ -46,3 +62,4 @@ operations
         post (rep in set reports);
             
 end Client
+\end{vdmpp}

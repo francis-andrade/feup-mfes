@@ -1,3 +1,4 @@
+\begin{vdmpp}[breaklines=true]
 class Driver is subclass of User
 types
     public Status = <Ready> | <ReachingClient> | <InTransit>;
@@ -10,6 +11,9 @@ instance variables
     public location: UberUtils`Location;
 
 operations
+(*@
+\label{Driver:13}
+@*)
   -- Driver Constructor
     public Driver : String * nat1 * nat * nat ==> Driver
         Driver(nm, spd, lat, lon) == (
@@ -19,16 +23,25 @@ operations
             return self
         );
     
+(*@
+\label{setReady:22}
+@*)
     -- Operations that change the Driver's state between READY, INTRANSIT and REACHING CLIENT
     public setReady: () ==> ()
         setReady() ==
             status := <Ready>
             pre status = <InTransit> or status = <ReachingClient>;
+(*@
+\label{setReachingClient:27}
+@*)
         
     public setReachingClient: () ==> ()
         setReachingClient() ==
             status := <ReachingClient>
             pre status = <Ready>;
+(*@
+\label{setInTransit:32}
+@*)
     
     public setInTransit: () ==> ()
         setInTransit() ==
@@ -36,3 +49,4 @@ operations
             pre status = <ReachingClient>;
 
 end Driver
+\end{vdmpp}

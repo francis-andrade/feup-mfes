@@ -1,3 +1,4 @@
+\begin{vdmpp}[breaklines=true]
 class Uber
 
 types
@@ -16,12 +17,18 @@ instance variables
     public drivers: set of Driver := {};
     public clients: set of Client := {};
     public admins: set of Admin := {};
+(*@
+\label{Uber:19}
+@*)
 
 operations
     -- class constructor
     public Uber:() ==> Uber
         Uber() ==
         return self;
+(*@
+\label{registerDriver:25}
+@*)
 
     /*ADMIN OPERATIONS*/
     --registers a Driver in the system
@@ -30,6 +37,9 @@ operations
             drivers := {d} union drivers;
             return drivers
         )    
+(*@
+\label{removeDriver:33}
+@*)
         pre (d not in set drivers);
     
     --removes a Driver from the system
@@ -38,6 +48,9 @@ operations
             drivers := {d} \ drivers;
             return drivers
         )    
+(*@
+\label{removeClient:41}
+@*)
         pre (d in set drivers);
 
     --removes a Client from the system
@@ -47,6 +60,9 @@ operations
             return clients
         )    
         pre (c in set clients);
+(*@
+\label{registerClient:50}
+@*)
     
     /*CLIENT OPERATIONS*/
     --registers a Client in the system
@@ -55,6 +71,9 @@ operations
             clients := {c} union clients;
             return clients
         )    
+(*@
+\label{requestRide:58}
+@*)
         pre (c not in set clients);
     
     --a client requests a ride    
@@ -63,6 +82,9 @@ operations
             c.setWaiting();
         )
         pre (exists d in set drivers & d.status = <Ready> and c in set clients and c.status = <Ready>)
+(*@
+\label{goOnRide:66}
+@*)
         post (c.status = <Waiting>);
         
     --a client enters the car and goes on a ride
@@ -77,6 +99,9 @@ operations
             endTime:=UberUtils`calculateTimestamp(UberUtils`calculateEndTime(initTime, time));
             c.addReport(mk_Report(initTime, endTime, c.location, destination, cost));
         ) pre (c.status = <Waiting> and c in set clients) 
+(*@
+\label{acceptRide:80}
+@*)
         post (c.status = <Ready> and c in set clients and c.location = destination);
     
     /*DRIVER OPERATIONS*/
@@ -84,6 +109,9 @@ operations
     public acceptRide: Driver * Client ==>()
         acceptRide(d, c) == (
             d.setReachingClient();
+(*@
+\label{takeOnRide:87}
+@*)
         )    
         pre (c in set clients and c.status = <Waiting> and d in set drivers and d.status = <Ready>)
         post (d.status=<ReachingClient> and d.location = c.location); 
@@ -96,3 +124,4 @@ operations
         post (d.status = <Ready> and d in set drivers and d.location = destination);
     
 end Uber
+\end{vdmpp}
