@@ -6,7 +6,12 @@ types
     --A Timestamp is a measurement of time.
     public Timestamp :: hour: nat
                         minute: nat
-                        second: nat;
+                        second: nat
+        inv d == d.minute >= 0 and d.minute <= 59 and d.second >= 0 and d.second <= 59;
+    
+    -- A Cost is a trip's price.  
+    public Cost = real
+        inv c == c >= 0;
     
     --A Location has a latitude and longitude (that function here as cartesian coordinates) and a country.
     public Location :: latitude: nat
