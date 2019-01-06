@@ -48,6 +48,6 @@ functions
     -- translates seconds into timestamps.            
     public calculateTimestamp: nat -> Timestamp
         calculateTimestamp(seconds) == 
-            mk_Timestamp(seconds/3600, (seconds/60) rem 60, seconds rem 60);
+            mk_Timestamp(seconds div 3600, (seconds div 60) rem 60, seconds rem 60);
         
 end UberUtils

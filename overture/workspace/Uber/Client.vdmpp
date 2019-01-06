@@ -47,9 +47,11 @@ operations
             pre status = <Waiting>;
     
     -- adds a report to their report set
-    public addReport: Uber`Report ==> ()
-        addReport(rep) == (
+    public endTrip: Uber`Report ==> ()
+        endTrip(rep) == (
             reports := reports union {rep};
+            location := rep.locationEnd;
+            status := <Ready>;
         )    
         pre (rep not in set reports)
         post (rep in set reports);

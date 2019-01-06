@@ -88,7 +88,7 @@ operations
             time := UberUtils`calculateTravelTime(d.speed, distance);
             cost := UberUtils`calculateCost(distance, time);
             endTime:=UberUtils`calculateTimestamp(UberUtils`calculateEndTime(initTime, time));
-            c.addReport(mk_Report(initTime, endTime, c.location, destination, cost));
+            c.endTrip(mk_Report(initTime, endTime, c.location, destination, cost));
         ) pre (c.status = <Waiting> and c in set clients) 
         post (c.status = <Ready> and c in set clients and c.location = destination);
     
