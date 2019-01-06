@@ -9,7 +9,7 @@ types
                      timeEnd: UberUtils`Timestamp
                      locationStart: UberUtils`Location
                      locationEnd: UberUtils`Location
-                     cost:rat;
+                     cost:UberUtils`Cost;
 
 instance variables
     -- sets of different Users that use the system.
