@@ -80,9 +80,8 @@ operations
 		pre (c in set clients and c.status = <Waiting> and d in set drivers and d.status = <Ready>)
 		post (d.status=<ReachingClient> and d.location = c.location); 
 	
-	public takeOnRide: Driver * Location ==> ()
-		takeOnRide(d, destination) ==
-			return
+	public takeOnRide: Driver * Client * Location ==> ()
+		takeOnRide(d, c, destination) == nil;
 		pre (d.status = <ReachingClient> and d in set drivers)
 		post (d.status = <Ready> and d in set drivers and d.location = destination);
 	
