@@ -47,7 +47,7 @@ operations
 			drivers := {d} \ drivers;
 			return drivers
 		)	
-		pre (d not in set drivers);
+		pre (d in set drivers);
 
 	--removes a Client from the system
 	public removeClient: Client ==> set of Client
