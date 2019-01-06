@@ -4,16 +4,12 @@
 		<item value="244" key="dialogHeight"/>
 		<item value="344" key="dialogWidth"/>
 		<list key="textEntries">
-			<item value="1"/>
 		</list>
 		<list key="orderedElements">
-			<item value="org.eclipse.ui.editors.lineNumberToggle"/>
 		</list>
 		<list key="orderedProviders">
-			<item value="org.eclipse.ui.commands"/>
 		</list>
 		<list key="textArray">
-			<item value="number"/>
 		</list>
 	</section>
 </section>

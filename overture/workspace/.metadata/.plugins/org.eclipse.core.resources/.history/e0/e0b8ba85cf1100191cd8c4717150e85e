@@ -3,6 +3,12 @@ class Uber
 types
 	public Timestamp = Utils`Timestamp;
 	public Location = Utils`Location;
+	-- A Report is a document with details about a client's trips
+	public Report :: timeStart: Utils`Timestamp
+	 								 timeEnd: Utils`Timestamp
+									 locationStart: Utils`Location
+									 locationEnd: Utils`Location
+									 cost:rat;
 
 instance variables
 	public drivers: set of Driver := {};
@@ -10,6 +16,11 @@ instance variables
 	public admins: set of Admin := {};
 
 operations
+	public Uber: ==> Uber{
+		Uber() ==
+		return self;
+
+	/*ADMIN OPERATIONS*/
 	--registers a Driver in the system
 	public registerDriver: Driver ==> set of Driver
 		registerDriver(d) == (
@@ -51,27 +62,32 @@ operations
 		pre (exists d in set drivers & d.status = <Ready> and c in set clients and c.status = <Ready>)
 		post (c.status = <Waiting>);
 		
-	--a client goes on a ride
+	--a client enters the car and goes on a ride
 	public goOnRide: Client * Location * Timestamp * Driver ==> ()
 		goOnRide(c, destination, initTime, d)==(
 			dcl distance:rat, cost:rat, endTime:Timestamp, time:nat;
+			
 			--c.status := <InTransit>;
 			distance := Utils`calculateDistance(c.location, destination);
 			time := Utils`calculateTravelTime(d.speed, distance);
-			cost := calculateCost(distance, time);
-			endTime:=Utils`calculateTimestamp(Utils`calculateEndTime( 
-			c.addReport(Report`Report(initTime, 
-								Utils`calculateTimestamp(
-									
-								),
-								c.location, destination));
-		)
-			
-		
-functions
-	public calculateCost(distance:rat, time:nat) cost:rat
-		post cost = 2.5 + distance * 0.30 + 0.10 * (time/60);
-
-traces
--- TODO Define Combinatorial Test Traces here
+			cost := Utils`calculateCost(distance, time);
+			endTime:=Utils`calculateTimestamp(Utils`calculateEndTime(initTime, time));
+			c.addReport(mk_Report(initTime, endTime, c.location, destination, cost));
+		) pre (c.status = <Waiting> and c in set clients) 
+		post (c.status = <Ready> and c in set clients and c.location = destination);
+	
+	/*DRIVER OPERATIONS*/
+	public acceptRide: Driver * Client ==>()
+		acceptRide(d, c) == (
+			d.setReachingClient();
+		)	
+		pre (c in set clients and c.status = <Waiting> and d in set drivers and d.status = <Ready>)
+		post (d.status=<ReachingClient> and d.location = c.location); 
+	
+	public takeOnRide: Driver * Location ==> ()
+		takeOnRide(d, destination) ==
+			return
+		pre (d.status = <ReachingClient> and d in set drivers)
+		post (d.status = <Ready> and d in set drivers and d.location = destination);
+	
 end Uber

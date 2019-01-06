@@ -16,6 +16,10 @@ instance variables
 	public admins: set of Admin := {};
 
 operations
+	public Uber:() ==> Uber
+		Uber() ==
+		return self;
+
 	/*ADMIN OPERATIONS*/
 	--registers a Driver in the system
 	public registerDriver: Driver ==> set of Driver

@@ -394,3 +394,48 @@ org.eclipse.core.commands.NotHandledException: There is no handler to execute fo
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:590)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1499)
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1472)
+!SESSION 2019-01-06 12:56:57.013 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_191
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.overture.ide.plugins.codegen 4 0 2019-01-06 13:58:08.733
+!MESSAGE Unexpected problem encountered when attempting to code generate the VDM model.
+The details of this problem have been reported in the Error Log.
+!STACK 0
+java.lang.NullPointerException
+	at org.overture.typechecker.assistant.type.PTypeAssistantTC.isMap(PTypeAssistantTC.java:225)
+	at org.overture.codegen.vdm2java.VdmAstJavaValidator.caseAStarStarBinaryExp(VdmAstJavaValidator.java:81)
+	at org.overture.ast.expressions.AStarStarBinaryExp.apply(AStarStarBinaryExp.java:197)
+	at org.overture.ast.analysis.DepthFirstAnalysisAdaptor.caseAPlusNumericBinaryExp(DepthFirstAnalysisAdaptor.java:6296)
+	at org.overture.ast.expressions.APlusNumericBinaryExp.apply(APlusNumericBinaryExp.java:197)
+	at org.overture.ast.analysis.DepthFirstAnalysisAdaptor.caseAEqualsBinaryExp(DepthFirstAnalysisAdaptor.java:4928)
+	at org.overture.ast.expressions.AEqualsBinaryExp.apply(AEqualsBinaryExp.java:197)
+	at org.overture.ast.analysis.DepthFirstAnalysisAdaptor.caseAAndBooleanBinaryExp(DepthFirstAnalysisAdaptor.java:5735)
+	at org.overture.ast.expressions.AAndBooleanBinaryExp.apply(AAndBooleanBinaryExp.java:197)
+	at org.overture.ast.analysis.DepthFirstAnalysisAdaptor.caseAImplicitFunctionDefinition(DepthFirstAnalysisAdaptor.java:12708)
+	at org.overture.ast.definitions.AImplicitFunctionDefinition.apply(AImplicitFunctionDefinition.java:407)
+	at org.overture.ast.analysis.DepthFirstAnalysisAdaptor.caseAFunctionType(DepthFirstAnalysisAdaptor.java:7333)
+	at org.overture.ast.types.AFunctionType.apply(AFunctionType.java:326)
+	at org.overture.ast.analysis.DepthFirstAnalysisAdaptor.caseAExplicitFunctionDefinition(DepthFirstAnalysisAdaptor.java:12565)
+	at org.overture.ast.definitions.AExplicitFunctionDefinition.apply(AExplicitFunctionDefinition.java:500)
+	at org.overture.ast.analysis.DepthFirstAnalysisAdaptor.caseAImplicitFunctionDefinition(DepthFirstAnalysisAdaptor.java:12728)
+	at org.overture.ast.definitions.AImplicitFunctionDefinition.apply(AImplicitFunctionDefinition.java:407)
+	at org.overture.ast.analysis.DepthFirstAnalysisAdaptor.caseAClassClassDefinition(DepthFirstAnalysisAdaptor.java:14086)
+	at org.overture.ast.definitions.AClassClassDefinition.apply(AClassClassDefinition.java:277)
+	at org.overture.ast.analysis.DepthFirstAnalysisAdaptor.caseATypeDefinition(DepthFirstAnalysisAdaptor.java:12344)
+	at org.overture.ast.definitions.ATypeDefinition.apply(ATypeDefinition.java:575)
+	at org.overture.ast.analysis.DepthFirstAnalysisAdaptor.caseARecordInvariantType(DepthFirstAnalysisAdaptor.java:8540)
+	at org.overture.ast.types.ARecordInvariantType.apply(ARecordInvariantType.java:362)
+	at org.overture.ast.analysis.DepthFirstAnalysisAdaptor.caseAInstanceVariableDefinition(DepthFirstAnalysisAdaptor.java:11289)
+	at org.overture.ast.definitions.AInstanceVariableDefinition.apply(AInstanceVariableDefinition.java:366)
+	at org.overture.ast.analysis.DepthFirstAnalysisAdaptor.caseAClassClassDefinition(DepthFirstAnalysisAdaptor.java:14086)
+	at org.overture.ast.definitions.AClassClassDefinition.apply(AClassClassDefinition.java:277)
+	at org.overture.codegen.vdm2java.JavaCodeGen.validateVdmNode(JavaCodeGen.java:531)
+	at org.overture.codegen.vdm2java.JavaCodeGen.genIrStatus(JavaCodeGen.java:510)
+	at org.overture.codegen.ir.CodeGenBase.generate(CodeGenBase.java:122)
+	at org.overture.ide.plugins.javagen.commands.Vdm2JavaCommand.generateJava(Vdm2JavaCommand.java:354)
+	at org.overture.ide.plugins.javagen.commands.Vdm2JavaCommand$1.run(Vdm2JavaCommand.java:179)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
