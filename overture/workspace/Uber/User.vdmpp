@@ -1,8 +1,12 @@
 class User
+/*
+    Class inherited by Client, Admin and Driver. A User is someone who is using the system.
+*/
 types
-	public String = seq of char;
+    -- a user has a username.
+    public String = seq of char;
 
 instance variables
-	public name: String;
+    public name: String;
 
 end User
