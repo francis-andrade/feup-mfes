@@ -143,18 +143,15 @@ operations
 			  assertEqual(<ReachingClient>, d.getStatus());
 			  
 			  -- client goes on a ride 
-			  u.goOnRide(c, mk_UberUtils`Location(1, 1, "Portugal"), mk_UberUtils`Timestamp(0, 0, 0), d);
+			  u.takeOnRide(d, mk_UberUtils`Location(1, 1, "Portugal"));
 				
 				-- verifies that a client state is set to ready after the end of its trip
-				assertEqual(<Ready>, c.getStatus());
+				assertEqual(<Ready>, d.getStatus());
 				
 				-- verifies that the client location is equal to the destination
-				assertEqual(mk_UberUtils`Location(1, 1, "Portugal"), c.getLocation());
+				assertEqual(mk_UberUtils`Location(1, 1, "Portugal"), d.getLocation());
 				
-				-- verifies that the starting time of a trip precedes its ending time
-				for all report in set c.getReports() do(
-					assertTrue(report.timeStart.hour <= report.timeEnd.hour);
-				)
+				
 			);
 		
 		-- runs all the tests
@@ -165,6 +162,7 @@ operations
 				testCreateAccount();
 				testRemoveClient();
 				testGoOnRide();
+				testTakeOnRide();
 			);	
 
 

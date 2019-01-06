@@ -90,7 +90,7 @@ operations
             endTime:=UberUtils`calculateTimestamp(UberUtils`calculateEndTime(initTime, time));
             c.endTrip(mk_Report(initTime, endTime, c.location, destination, cost));
         ) pre (c.status = <Waiting> and c in set clients) 
-        post (c.status = <Ready> and c in set clients and c.location = destination);
+        post (c.status = <Ready> and c.location = destination);
     
     /*DRIVER OPERATIONS*/
     -- a driver accepts a ride
@@ -103,9 +103,10 @@ operations
     
     -- a driver picks up a client and goes to their destination
     public takeOnRide: Driver * Location ==> ()
-        takeOnRide(d, destination) ==
-            return
+        takeOnRide(d, destination) == (
+        	d.endTrip(destination);
+        )
         pre (d.status = <ReachingClient> and d in set drivers)
-        post (d.status = <Ready> and d in set drivers and d.location = destination);
+        post (d.status = <Ready> and d.location = destination);
     
 end Uber
