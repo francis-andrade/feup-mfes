@@ -18,6 +18,24 @@ functions
 					and timeE.second > timeS.second)))
 		post 	time = (timeE.hour *1440 + timeE.minute * 60 + timeE.second) 
 					- (timeS.hour *1440 + timeS.minute * 60 + timeS.second);
+	
+	public calculateCost(distance:rat, time:nat) cost:rat
+		post cost = 2.5 + distance * 0.30 + 0.10 * (time/60);
+	
+	public calculateDistance(localS:Location, localD:Location) dist:rat
+		post dist * dist = (localS.latitude - localD.latitude) ** 2 + (localS.longitude - localD.longitude) ** 2
+			and dist >= 0;
+			
+	public calculateEndTime(timeS:Timestamp, elapsed:nat) time:nat
+		post time =  timeS.hour * 1440 + timeS.minute * 60 + timeS.second + elapsed;
+		
+	public calculateTravelTime(speed:nat1, dist:real) time:nat
+		post time =  floor(dist/speed) + 1;
+				
+	public calculateTimestamp(seconds:nat) time:Timestamp
+		post time.second = seconds rem 60 and time.minute = (seconds/60) rem 60 and time.hour = seconds/3600;
+		
+	
 				
 		
 end Utils

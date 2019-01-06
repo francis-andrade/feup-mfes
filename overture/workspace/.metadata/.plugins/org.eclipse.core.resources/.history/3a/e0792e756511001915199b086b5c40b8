@@ -1,0 +1,38 @@
+class Utils
+/*
+	This class contains functions and types useful for abstraction and computation of operations.
+*/
+types
+	public Timestamp ::	hour: nat1
+											minute: nat1
+											second: nat1;
+	
+	public Location :: latitude: nat
+										 longitude: nat
+										 country: seq1 of char;
+
+functions
+	public timeBetween(timeS:Timestamp, timeE:Timestamp) time:nat
+		pre timeE.hour > timeS.hour or (timeE.hour = timeS.hour and 
+					(timeE.minute > timeS.minute or (timeE.minute = timeS.minute 
+					and timeE.second > timeS.second)))
+		post 	time = (timeE.hour *1440 + timeE.minute * 60 + timeE.second) 
+					- (timeS.hour *1440 + timeS.minute * 60 + timeS.second);
+					
+	public calculateDistance(localS:Location, localD:Location) dist:rat
+		post dist * dist = (localS.latitude - localD.latitude) ** 2 + (localS.longitude - localD.longitude) ** 2
+			and dist >= 0;
+			
+	public calculateEndTime(timeS:Timestamp, elapsed:nat) time:nat
+		post time =  timeS.hour * 1440 + timeS.minute * 60 + timeS.second + elapsed;
+		
+public calculateTravelTime(speed:nat1, dist:real) time:nat
+		post time =  floor(dist/speed) + 1;
+				
+	public calculateTimestamp(seconds:nat) time:Timestamp
+		post time.second = seconds rem 60 and time.minute = (seconds/60) rem 60 and time.hour = seconds/3600;
+		
+	
+				
+		
+end Utils

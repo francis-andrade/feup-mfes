@@ -1,0 +1,48 @@
+class Uber
+/*
+	Main instance class. The system has a set of clients, driver and admins
+*/
+
+instance variables
+	public drivers: set of Driver := {};
+	public clients: set of Client := {};
+	public admins: set of Admin := {};
+
+operations
+	--registers a Driver in the system
+	public registerDriver: Driver ==> set of Driver
+		registerDriver(d) == (
+			drivers := {d} union drivers;
+			return drivers
+		)	
+		pre (d not in set drivers);
+	
+	--removes a Driver from the system
+	public removeDriver: Driver ==> set of Driver
+		removeDriver(d) == (
+			drivers := {d} \ drivers;
+			return drivers
+		)	
+		pre (d not in set drivers);
+
+	--removes a Client from the system
+	public removeClient: Client ==> set of Client
+		removeClient(c) == (
+			clients := {c} \ clients;
+			return clients
+		)	
+		pre (c not in set clients);
+		
+	--registers a Client in the system
+	public registerClient: Client ==> set of Client
+		registerClient(c) == (
+			clients := {c} union clients;
+			return clients
+		)	
+		pre (c not in set clients);
+	
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end Uber

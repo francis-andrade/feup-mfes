@@ -1,0 +1,28 @@
+class Report
+/*
+	A Report is a document with details about a client's trips. 
+*/
+types
+	private Timestamp = Utils`Timestamp;
+	private Location = Utils`Location;
+
+instance variables
+	public timeStart: Timestamp;
+	public timeEnd: Timestamp;
+	public locationStart: Location;
+	public locationEnd: Location;
+	public cost: rat;
+	
+operations
+	--Generates a trip report.
+	public Report : Timestamp * Timestamp * Location * Location ==> Report
+		Report (tS, tE, lS, lE) == (
+			timeStart := tS;
+			timeEnd := tE;
+			locationStart := lS;
+			locationEnd := lE;
+			cost := 2.5 + Utils`calculateDistance(lS,lE) * 0.30 + 0.10 * (Utils`timeBetween(tS,tE)/60); 
+			return self;
+		);
+
+end Report

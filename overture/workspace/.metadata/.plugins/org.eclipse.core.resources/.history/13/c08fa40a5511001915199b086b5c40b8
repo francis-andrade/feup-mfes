@@ -1,0 +1,28 @@
+class Report
+types
+
+values
+-- TODO Define values here
+instance variables
+	public timeStart: Utils`Timestamp;
+	public timeEnd: Utils`Timestamp;
+	public locationStart: Utils`Location;
+	public locationEnd: Utils`Location;
+	public cost: rat;
+	
+operations
+	public Report : Utils`Timestamp * Utils`Timestamp * Utils`Location * Utils`Location ==> Report
+		Report (tS, tE, lS, lE) == (
+			timeStart := tS;
+			timeEnd := tE;
+			locationStart := lS;
+			locationEnd := lE;
+			cost := 
+			return self;
+		);
+
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end Report

@@ -1,0 +1,80 @@
+class Uber
+
+types
+	public Timestamp = Utils`Timestamp;
+	public Location = Utils`Location;
+	-- A Report is a document with details about a client's trips
+	public Report :: timeStart: Utils`Timestamp
+	 								 timeEnd: Utils`Timestamp
+									 locationStart: Utils`Location
+									 locationEnd: Utils`Location
+									 cost:rat;
+
+instance variables
+	public drivers: set of Driver := {};
+	public clients: set of Client := {};
+	public admins: set of Admin := {};
+
+operations
+	--registers a Driver in the system
+	public registerDriver: Driver ==> set of Driver
+		registerDriver(d) == (
+			drivers := {d} union drivers;
+			return drivers
+		)	
+		pre (d not in set drivers);
+	
+	--removes a Driver from the system
+	public removeDriver: Driver ==> set of Driver
+		removeDriver(d) == (
+			drivers := {d} \ drivers;
+			return drivers
+		)	
+		pre (d not in set drivers);
+
+	--removes a Client from the system
+	public removeClient: Client ==> set of Client
+		removeClient(c) == (
+			clients := {c} \ clients;
+			return clients
+		)	
+		pre (c not in set clients);
+	
+	/*CLIENT OPERATIONS*/
+	--registers a Client in the system
+	public registerClient: Client ==> set of Client
+		registerClient(c) == (
+			clients := {c} union clients;
+			return clients
+		)	
+		pre (c not in set clients);
+	
+	--a client requests a ride	
+	public requestRide: Client ==> ()
+		requestRide(c) == (
+			c.setWaiting();
+		)
+		pre (exists d in set drivers & d.status = <Ready> and c in set clients and c.status = <Ready>)
+		post (c.status = <Waiting>);
+		
+	--a client goes on a ride
+	public goOnRide: Client * Location * Timestamp * Driver ==> ()
+		goOnRide(c, destination, initTime, d)==(
+			dcl distance:rat, cost:rat, endTime:Timestamp, time:nat;
+			--c.status := <InTransit>;
+			distance := Utils`calculateDistance(c.location, destination);
+			time := Utils`calculateTravelTime(d.speed, distance);
+			cost := calculateCost(distance, time);
+			endTime:=Utils`calculateTimestamp(Utils`calculateEndTime(initTime, time));
+			c.addReport(mk_Report(initTime, endTime, c.location, destination, cost));
+		) post (c.status = <Ready>);
+	
+			
+		
+functions
+	public calculateCost(distance:rat, time:nat) cost:rat
+		post cost = 2.5 + distance * 0.30 + 0.10 * (time/60);
+
+traces
+-- TODO Define Combinatorial Test Traces here
+end Uber
