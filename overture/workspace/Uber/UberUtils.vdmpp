@@ -4,9 +4,9 @@ class UberUtils
 */
 types
     --A Timestamp is a measurement of time.
-    public Timestamp :: hour: nat1
-                        minute: nat1
-                        second: nat1;
+    public Timestamp :: hour: nat
+                        minute: nat
+                        second: nat;
     
     --A Location has a latitude and longitude (that function here as cartesian coordinates) and a country.
     public Location :: latitude: nat

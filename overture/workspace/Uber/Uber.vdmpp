@@ -70,7 +70,7 @@ operations
         )    
         pre (c not in set clients);
     
-    --a client requests a ride    
+    -- a client requests a ride    
     public requestRide: Client ==> ()
         requestRide(c) == (
             c.setWaiting();
@@ -78,7 +78,7 @@ operations
         pre (exists d in set drivers & d.status = <Ready> and c in set clients and c.status = <Ready>)
         post (c.status = <Waiting>);
         
-    --a client enters the car and goes on a ride
+    -- a client enters the car and goes on a ride
     public goOnRide: Client * Location * Timestamp * Driver ==> ()
         goOnRide(c, destination, initTime, d)==(
             dcl distance:rat, cost:rat, endTime:Timestamp, time:nat;
@@ -101,7 +101,7 @@ operations
         pre (c in set clients and c.status = <Waiting> and d in set drivers and d.status = <Ready>)
         post (d.status=<ReachingClient> and d.location = c.location); 
     
-    --a driver picks up a client and goes to their destination
+    -- a driver picks up a client and goes to their destination
     public takeOnRide: Driver * Location ==> ()
         takeOnRide(d, destination) ==
             return
