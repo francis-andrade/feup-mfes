@@ -24,7 +24,7 @@ operations
 		  -- creates new driver
 			dcl d: Driver := new Driver("Antonio", 40, 0, 0);
 			
-			assertEqual(1, u.registerDriver(d));
+			assertEqual(1, card u.registerDriver(d));
 
 			
 			
