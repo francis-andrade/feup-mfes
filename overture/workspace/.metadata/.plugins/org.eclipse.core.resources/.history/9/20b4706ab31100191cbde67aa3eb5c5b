@@ -85,6 +85,6 @@ operations
 			d.location := destination;
 		)
 		pre (d.status = <ReachingClient> and d in set drivers)
-		post (d.status = <Ready> and d in set drivers and d.location = destination);
+		post (d.status = <Ready> and d in set clients);
 	
 end Uber

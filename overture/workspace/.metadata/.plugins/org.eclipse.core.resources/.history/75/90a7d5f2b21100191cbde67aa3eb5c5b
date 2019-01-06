@@ -62,15 +62,16 @@ operations
 	public goOnRide: Client * Location * Timestamp * Driver ==> ()
 		goOnRide(c, destination, initTime, d)==(
 			dcl distance:rat, cost:rat, endTime:Timestamp, time:nat;
-			
+			inv (c in set clients)
 			--c.status := <InTransit>;
 			distance := Utils`calculateDistance(c.location, destination);
 			time := Utils`calculateTravelTime(d.speed, distance);
 			cost := Utils`calculateCost(distance, time);
 			endTime:=Utils`calculateTimestamp(Utils`calculateEndTime(initTime, time));
 			c.addReport(mk_Report(initTime, endTime, c.location, destination, cost));
-		) pre (c.status = <Waiting> and c in set clients) 
-		post (c.status = <Ready> and c in set clients and c.location = destination);
+		) pre (c.status = <Waiting>) 
+		post (c.status = <Ready>);
+		;
 	
 	/*DRIVER OPERATIONS*/
 	public acceptRide: Driver * Client ==>()
@@ -80,11 +81,9 @@ operations
 		pre (c in set clients and c.status = <Waiting> and d in set drivers and d.status = <Ready>)
 		post (d.status=<ReachingClient> and d.location = c.location); 
 	
-	public takeOnRide: Driver * Client * Location ==> ()
-		takeOnRide(d, c, destination) ==(
-			d.location := destination;
-		)
-		pre (d.status = <ReachingClient> and d in set drivers)
-		post (d.status = <Ready> and d in set drivers and d.location = destination);
+	public takeOnRide: Driver * Client ==> ()
+		takeOnRide(d, c, ) ==(
+			
+		);
 	
 end Uber
