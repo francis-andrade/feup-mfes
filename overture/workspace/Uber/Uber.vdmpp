@@ -55,7 +55,7 @@ operations
 			clients := {c} \ clients;
 			return clients
 		)	
-		pre (c not in set clients);
+		pre (c in set clients);
 	
 	/*CLIENT OPERATIONS*/
 	--registers a Client in the system
