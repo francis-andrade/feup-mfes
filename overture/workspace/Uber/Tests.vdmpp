@@ -2,6 +2,7 @@ class Tests
 
 operations
 
+  -- displays the result of a test in an user-friendly way, in case there is an error
   private assertEqual : ? * ? ==> ()
 	assertEqual(expected, actual) == 
 	  if expected <> actual then (
@@ -14,9 +15,18 @@ operations
 		)
 	post expected = actual;
 	
+	-- checks if a new Driver was correctly added to the UBER system
 	public testCreateDriver : () ==> ()
 		testCreateDriver() == (
+		  -- creates new UBER system
+		  dcl u:Uber := new Uber();
+		  
+		  -- creates new driver
 			dcl d: Driver := new Driver("Antonio", 40, 0, 0);
+			
+			assertEqual(1, u.registerDriver(d));
+
+			
 			
 		);
 
