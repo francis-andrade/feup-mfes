@@ -102,6 +102,55 @@ operations
 				-- verifies that a client state is set to ready after the end of its trip
 				assertEqual(<Ready>, c.getStatus());
 				
+				-- verifies that the client location is equal to the destination
+				assertEqual(mk_UberUtils`Location(1, 1, "Portugal"), c.getLocation());
+				
+				-- verifies that the starting time of a trip precedes its ending time
+				for all report in set c.getReports() do(
+					assertTrue(report.timeStart.hour <= report.timeEnd.hour);
+				)
+			);
+			
+	  -- verifies that a client can correctly take on a ride
+		public testTakeOnRide : () ==> ()
+			testTakeOnRide() == (
+				-- creates new UBER system
+		  	dcl u:Uber := new Uber();
+		  	
+		  	-- creates new client
+		  	dcl c: Client := new Client("Barbara", 0, 0);
+		  	
+		  	-- creates new driver
+				dcl d: Driver := new Driver("Antonio", 40, 0, 0);
+		  	
+		  	
+		  	-- verifies that client was properly registered
+		  	assertEqual({c}, u.registerClient(c));
+		  	
+		  	-- verifies that the driver was added to the system
+			  assertEqual({d}, u.registerDriver(d));
+			  
+			  -- client requests ride
+			  u.requestRide(c);
+			  
+			  -- verifies that the client state is set to Waiting
+			  assertEqual(<Waiting>, c.getStatus());
+			  
+			  -- driver accepts ride
+			  u.acceptRide(d, c);
+			  
+			  -- verifies that the driver state is set to Reaching Client
+			  assertEqual(<ReachingClient>, d.getStatus());
+			  
+			  -- client goes on a ride 
+			  u.goOnRide(c, mk_UberUtils`Location(1, 1, "Portugal"), mk_UberUtils`Timestamp(0, 0, 0), d);
+				
+				-- verifies that a client state is set to ready after the end of its trip
+				assertEqual(<Ready>, c.getStatus());
+				
+				-- verifies that the client location is equal to the destination
+				assertEqual(mk_UberUtils`Location(1, 1, "Portugal"), c.getLocation());
+				
 				-- verifies that the starting time of a trip precedes its ending time
 				for all report in set c.getReports() do(
 					assertTrue(report.timeStart.hour <= report.timeEnd.hour);

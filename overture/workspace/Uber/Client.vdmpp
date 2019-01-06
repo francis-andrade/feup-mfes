@@ -26,6 +26,10 @@ operations
 		pure public getStatus: () ==> Status
 		getStatus() == return status;
 		
+		--gets Location
+		pure public getLocation: () ==> UberUtils`Location
+		getLocation() == return location;
+		
 		-- gets Reports
 		pure public getReports: () ==> set of Uber`Report
 		getReports() == return reports;
