@@ -5,4 +5,9 @@ types
 instance variables
 	public name: String;
 
+operations
+	-- gets name
+	pure public getName: () ==> String
+		getName() == return name;
+
 end User
