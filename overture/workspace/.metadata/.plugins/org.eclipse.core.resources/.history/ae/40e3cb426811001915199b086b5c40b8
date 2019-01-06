@@ -68,20 +68,16 @@ operations
 			cost := Utils`calculateCost(distance, time);
 			endTime:=Utils`calculateTimestamp(Utils`calculateEndTime(initTime, time));
 			c.addReport(mk_Report(initTime, endTime, c.location, destination, cost));
-		) pre (c.status = <Waiting>) 
-		post (c.status = <Ready>);
+		) post (c.status = <Ready>);
 	
 	/*DRIVER OPERATIONS*/
-	public acceptRide: Driver * Client ==>()
-		acceptRide(d, c) == (
+	public acceptRide: Driver ==>()
+		acceptRide(d) == (
 			d.setReachingClient();
 		)	
-		pre (c in set clients and c.status = <Waiting> and d in set drivers and d.status = <Ready>)
-		post (d.status=<ReachingClient> and d.location = c.location); 
-	
-	public takeOnRide: Driver * Client ==> ()
-		takeOnRide(d, c) ==(
-		--todo
-		);
-	
+		pre (exists c in set clients & c.status = <Waiting> and d in set drivers and d.status = <Ready>)
+		post (d. 
+		
+traces
+-- TODO Define Combinatorial Test Traces here
 end Uber

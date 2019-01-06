@@ -16,7 +16,6 @@ instance variables
 	public admins: set of Admin := {};
 
 operations
-	/*ADMIN OPERATIONS*/
 	--registers a Driver in the system
 	public registerDriver: Driver ==> set of Driver
 		registerDriver(d) == (
@@ -68,20 +67,12 @@ operations
 			cost := Utils`calculateCost(distance, time);
 			endTime:=Utils`calculateTimestamp(Utils`calculateEndTime(initTime, time));
 			c.addReport(mk_Report(initTime, endTime, c.location, destination, cost));
-		) pre (c.status = <Waiting>) 
-		post (c.status = <Ready>);
+		) post (c.status = <Ready>);
 	
-	/*DRIVER OPERATIONS*/
-	public acceptRide: Driver * Client ==>()
-		acceptRide(d, c) == (
-			d.setReachingClient();
-		)	
-		pre (c in set clients and c.status = <Waiting> and d in set drivers and d.status = <Ready>)
-		post (d.status=<ReachingClient> and d.location = c.location); 
+		
+functions
 	
-	public takeOnRide: Driver * Client ==> ()
-		takeOnRide(d, c) ==(
-		--todo
-		);
-	
+
+traces
+-- TODO Define Combinatorial Test Traces here
 end Uber

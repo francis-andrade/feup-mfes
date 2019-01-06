@@ -81,7 +81,7 @@ operations
 	
 	public takeOnRide: Driver * Client ==> ()
 		takeOnRide(d, c) ==(
-		--todo
+		nil
 		);
 	
 end Uber

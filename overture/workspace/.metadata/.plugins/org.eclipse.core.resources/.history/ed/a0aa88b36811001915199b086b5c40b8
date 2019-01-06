@@ -79,9 +79,6 @@ operations
 		pre (c in set clients and c.status = <Waiting> and d in set drivers and d.status = <Ready>)
 		post (d.status=<ReachingClient> and d.location = c.location); 
 	
-	public takeOnRide: Driver * Client ==> ()
-		takeOnRide(d, c) ==(
-		--todo
-		);
+	public takeOnRide: Driver * 
 	
 end Uber

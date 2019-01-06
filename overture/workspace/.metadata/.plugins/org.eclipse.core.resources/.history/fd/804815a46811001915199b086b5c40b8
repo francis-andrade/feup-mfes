@@ -68,8 +68,7 @@ operations
 			cost := Utils`calculateCost(distance, time);
 			endTime:=Utils`calculateTimestamp(Utils`calculateEndTime(initTime, time));
 			c.addReport(mk_Report(initTime, endTime, c.location, destination, cost));
-		) pre (c.status = <Waiting>) 
-		post (c.status = <Ready>);
+		) post (c.status = <Ready>);
 	
 	/*DRIVER OPERATIONS*/
 	public acceptRide: Driver * Client ==>()
@@ -78,10 +77,5 @@ operations
 		)	
 		pre (c in set clients and c.status = <Waiting> and d in set drivers and d.status = <Ready>)
 		post (d.status=<ReachingClient> and d.location = c.location); 
-	
-	public takeOnRide: Driver * Client ==> ()
-		takeOnRide(d, c) ==(
-		--todo
-		);
-	
+		
 end Uber
