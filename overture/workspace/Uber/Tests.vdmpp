@@ -40,5 +40,11 @@ operations
 				
 				assertEqual(0, card u.removeDriver(d));		 
 			);
+			
+		public testAll : () ==> ()
+			testAll() == (
+				testCreateDriver();
+				testRemoveDriver();
+			);	
 
 end Tests
