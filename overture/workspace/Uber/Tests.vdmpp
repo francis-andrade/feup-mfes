@@ -17,7 +17,7 @@ operations
 	public testCreateDriver : () ==> ()
 		testCreateDriver() == (
 			dcl d: Driver := new Driver("Antonio", 40, 0, 0);
-			
+			return
 		);
 
 end Tests

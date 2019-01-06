@@ -1,13 +1,13 @@
 class Uber
 
 types
-	public Timestamp = Utils`Timestamp;
-	public Location = Utils`Location;
+	public Timestamp = UberUtils`Timestamp;
+	public Location = UberUtils`Location;
 	-- A Report is a document with details about a client's trips
-	public Report :: timeStart: Utils`Timestamp
-	 								 timeEnd: Utils`Timestamp
-									 locationStart: Utils`Location
-									 locationEnd: Utils`Location
+	public Report :: timeStart: UberUtils`Timestamp
+	 								 timeEnd: UberUtils`Timestamp
+									 locationStart: UberUtils`Location
+									 locationEnd: UberUtils`Location
 									 cost:rat;
 
 instance variables
@@ -68,10 +68,10 @@ operations
 			dcl distance:rat, cost:rat, endTime:Timestamp, time:nat;
 			
 			--c.status := <InTransit>;
-			distance := Utils`calculateDistance(c.location, destination);
-			time := Utils`calculateTravelTime(d.speed, distance);
-			cost := Utils`calculateCost(distance, time);
-			endTime:=Utils`calculateTimestamp(Utils`calculateEndTime(initTime, time));
+			distance := UberUtils`calculateDistance(c.location, destination);
+			time := UberUtils`calculateTravelTime(d.speed, distance);
+			cost := UberUtils`calculateCost(distance, time);
+			endTime:=UberUtils`calculateTimestamp(UberUtils`calculateEndTime(initTime, time));
 			c.addReport(mk_Report(initTime, endTime, c.location, destination, cost));
 		) pre (c.status = <Waiting> and c in set clients) 
 		post (c.status = <Ready> and c in set clients and c.location = destination);
