@@ -1,0 +1,14 @@
+\begin{vdmpp}[breaklines=true]
+class User
+/*
+    Class inherited by Client, Admin and Driver. A User is someone who is using the system.
+*/
+types
+    -- a user has a username.
+    public String = seq of char;
+
+instance variables
+    public name: String;
+
+end User
+\end{vdmpp}

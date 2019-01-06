@@ -1,0 +1,91 @@
+\begin{vdmpp}[breaklines=true]
+class UberUtils
+/*
+    This class contains functions and types useful for abstraction and computation of operations.
+*/
+types
+    --A Timestamp is a measurement of time.
+    public Timestamp :: hour: nat1
+                        minute: nat1
+                        second: nat1;
+    
+    --A Location has a latitude and longitude (that function here as cartesian coordinates) and a country.
+    public Location :: latitude: nat
+                       longitude: nat
+                       country: seq1 of char;
+(*@
+\label{timeBetween:15}
+@*)
+(*@
+\label{timeBetween:15}
+@*)
+
+functions
+    -- calculates the amount of seconds between two timestamps.
+    -- the first argument must be earlier than the second one.
+    public timeBetween : Timestamp * Timestamp -> nat
+        timeBetween(timeS, timeE) == 
+            (timeE.hour *1440 + timeE.minute * 60 + timeE.second) 
+(*@
+\label{calculateCost:22}
+@*)
+(*@
+\label{calculateCost:22}
+@*)
+                    - (timeS.hour *1440 + timeS.minute * 60 + timeS.second)
+        pre timeE.hour > timeS.hour or (timeE.hour = timeS.hour and 
+                    (timeE.minute > timeS.minute or (timeE.minute = timeS.minute 
+(*@
+\label{calculateDistance:25}
+@*)
+(*@
+\label{calculateDistance:25}
+@*)
+                    and timeE.second > timeS.second)));
+    
+    -- calculates the cost of a trip.
+    public calculateCost: rat * nat -> rat
+(*@
+\label{calculateEndTime:29}
+@*)
+(*@
+\label{calculateEndTime:29}
+@*)
+        calculateCost(distance, time) == 
+            2.5 + distance * 0.30 + 0.10 * (time/60);
+    
+(*@
+\label{calculateTravelTime:32}
+@*)
+(*@
+\label{calculateTravelTime:32}
+@*)
+    -- calculates the distance between two locations based off their coordinates.
+    public calculateDistance: Location * Location -> rat    
+        calculateDistance(localS, localD) ==
+(*@
+\label{calculateTimestamp:35}
+@*)
+(*@
+\label{calculateTimestamp:35}
+@*)
+            ((localS.latitude - localD.latitude) ** 2 + (localS.longitude - localD.longitude) ** 2) ** 0.5;
+    
+    -- calculates the end time of a trip based on the starting timestamp 
+    -- and the amount of seconds the trip took.        
+    public calculateEndTime: Timestamp * nat -> nat
+        calculateEndTime(timeS, elapsed) == 
+            timeS.hour * 1440 + timeS.minute * 60 + timeS.second + elapsed;
+    
+    -- calculates the seconds it took to travel, at a certain speed, a certain distance.
+    public calculateTravelTime: nat1 * real -> nat
+        calculateTravelTime(speed, dist) == 
+            floor(dist/speed) + 1;
+    
+    -- translates seconds into timestamps.            
+    public calculateTimestamp: nat -> Timestamp
+        calculateTimestamp(seconds) == 
+            mk_Timestamp(seconds/3600, (seconds/60) rem 60, seconds rem 60);
+        
+end UberUtils
+\end{vdmpp}
