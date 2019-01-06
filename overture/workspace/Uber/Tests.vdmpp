@@ -1,0 +1,23 @@
+class Tests
+
+operations
+
+  private assertEqual : ? * ? ==> ()
+	assertEqual(expected, actual) == 
+	  if expected <> actual then (
+		  IO`print("Actual Value: ");
+			IO`print(actual);
+			IO`print("\n");
+			IO`print("Expected Value: ");
+			IO`print(expected);
+			IO`print("\n");
+		)
+	post expected = actual;
+	
+	public testCreateDriver : () ==> ()
+		testCreateDriver() == (
+			dcl d: Driver := new Driver("Antonio", 40, 0, 0);
+			
+		);
+
+end Tests
