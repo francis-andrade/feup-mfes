@@ -8,7 +8,7 @@ types
 instance variables
 	public rating: rat := 5;
 	public status: Status := <Ready>;
-	public location: Utils`Location;
+	public location: UberUtils`Location;
 	public reports: set of Uber`Report := {};
 
 operations
@@ -16,7 +16,7 @@ operations
 	public Client : String * nat * nat ==> Client
 		Client(nm, lat, lon) == (
 			name := nm;
-			location := mk_Utils`Location(lat, lon, "Portugal");
+			location := mk_UberUtils`Location(lat, lon, "Portugal");
 			return self
 		);
 

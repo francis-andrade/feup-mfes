@@ -6,7 +6,7 @@ instance variables
 	public rating: rat := 5;
 	public status: Status := <Ready>;
 	public speed: nat1;
-	public location: Utils`Location;
+	public location: UberUtils`Location;
 
 operations
   -- Driver Constructor
@@ -14,7 +14,7 @@ operations
 		Driver(nm, spd, lat, lon) == (
 			name := nm;
 			speed := spd;
-			location := mk_Utils`Location(lat, lon, "Portugal");
+			location := mk_UberUtils`Location(lat, lon, "Portugal");
 			return self
 		);
 	
