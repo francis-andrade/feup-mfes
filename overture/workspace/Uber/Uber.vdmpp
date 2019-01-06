@@ -22,7 +22,20 @@ operations
     public Uber:() ==> Uber
         Uber() ==
         return self;
-
+		/*GET METHODS*/
+		
+		-- gets Drivers
+		pure public getDrivers: () ==> set of Driver
+		getDrivers() == return drivers;
+		
+		-- gets Clients
+		pure public getClients: () ==> set of Client
+		getClients() == return clients;
+		
+		-- gets Admins
+		pure public getAdmins: () ==> set of Admin
+		getAdmins() == return admins;
+		
     /*ADMIN OPERATIONS*/
     --registers a Driver in the system
     public registerDriver: Driver ==> set of Driver

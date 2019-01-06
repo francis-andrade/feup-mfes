@@ -20,7 +20,12 @@ operations
             location := mk_UberUtils`Location(lat, lon, "Portugal");
             return self
         );
-
+		
+		/*GET METHODS*/
+		-- gets Status
+		pure public getStatus: () ==> Status
+		getStatus() == return status;
+		
     -- Operations that change the Client's state
     public setReady: () ==> ()
         setReady() ==
