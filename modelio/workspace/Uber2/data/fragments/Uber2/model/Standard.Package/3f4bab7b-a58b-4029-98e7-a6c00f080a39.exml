@@ -12,6 +12,21 @@
       <ATT name="Name"><![CDATA[uber2]]></ATT>
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
-    <DEPENDENCIES></DEPENDENCIES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Basic VDM Types" mc="Standard.Package" uid="005f25dd-7bbd-4296-9663-b0bbc027e57d"/>
+        <COMPID name="Admin" mc="Standard.Class" uid="82d85b18-9a78-46c3-b1dc-497c30b04632"/>
+        <COMPID name="Client" mc="Standard.Class" uid="5bd970cb-f480-4a08-b6bf-6400573c3860"/>
+        <COMPID name="Driver" mc="Standard.Class" uid="7e303243-ba76-4093-9980-10163c0a4d33"/>
+        <COMPID name="Uber" mc="Standard.Class" uid="0462084f-11f8-4e6c-a597-89b661ca2823"/>
+        <COMPID name="User" mc="Standard.Class" uid="d64a74df-972e-4dd2-bbf2-a2773f14dfbc"/>
+        <COMPID name="UberUtils" mc="Standard.Class" uid="53686a3a-3376-4e82-9419-db6b69bc6e6b"/>
+        <COMPID name="Composite VDM Types" mc="Standard.Package" uid="eed8cf70-bccc-409d-9b5d-b806364bcc29"/>
+        <COMPID name="Binding classes" mc="Standard.Package" uid="730abd6c-0f8c-4d47-98b2-27782a4b1264"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="uber2 Class diagram" mc="Standard.ClassDiagram" uid="ad82ccb6-deba-4ae9-9fc8-0a6a5def407c"/>
+      </COMP>
+    </DEPENDENCIES>
   </OBJECT>
 </EXT>

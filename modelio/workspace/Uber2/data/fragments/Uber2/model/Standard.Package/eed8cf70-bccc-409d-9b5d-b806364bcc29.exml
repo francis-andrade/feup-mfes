@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Composite VDM Types" version="4">
+  <OBJECT>
+    <ID name="Composite VDM Types" mc="Standard.Package" uid="eed8cf70-bccc-409d-9b5d-b806364bcc29"/>
+    <PID name="uber2" mc="Standard.Package" uid="3f4bab7b-a58b-4029-98e7-a6c00f080a39"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Composite VDM Types]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Seq&lt;T&gt;" mc="Standard.Class" uid="6e086ebf-4999-42ce-869b-675abc1c1523"/>
+        <COMPID name="Set&lt;T&gt;" mc="Standard.Class" uid="11b339be-00d9-4437-8c8e-ae4a64e119c8"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
