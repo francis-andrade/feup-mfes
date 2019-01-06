@@ -23,15 +23,8 @@ operations
 		  
 		  -- creates new driver
 			dcl d: Driver := new Driver("Antonio", 40, 0, 0);
-<<<<<<< HEAD
-			return
-=======
-			
 			assertEqual(1, card u.registerDriver(d));
 
-			
-			
->>>>>>> 8e20eec422761cba929880f5e5d0800021cc82d5
 		);
 
 end Tests
