@@ -1,0 +1,11 @@
+class Admin is subclass of User
+
+operations
+	--creates an admin
+	public Admin : String ==> Admin
+		Admin(nm) == (
+			name := nm;
+			return self
+		);
+
+end Admin

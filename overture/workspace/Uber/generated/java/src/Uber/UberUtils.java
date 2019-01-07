@@ -7,16 +7,6 @@ import org.overture.codegen.runtime.*;
 public class UberUtils {
   public UberUtils() {}
 
-  public static Number timeBetween(final Timestamp timeS, final Timestamp timeE) {
-
-    return timeE.hour.longValue() * 1440L
-        + timeE.minute.longValue() * 60L
-        + timeE.second.longValue()
-        - (timeS.hour.longValue() * 1440L
-            + timeS.minute.longValue() * 60L
-            + timeS.second.longValue());
-  }
-
   public static Number calculateCost(final Number distance, final Number time) {
 
     return 2.5 + distance.doubleValue() * 0.3 + 0.1 * Utils.divide((1.0 * time.longValue()), 60L);
@@ -46,8 +36,8 @@ public class UberUtils {
   public static Timestamp calculateTimestamp(final Number seconds) {
 
     return new Timestamp(
-        Utils.divide((1.0 * seconds.longValue()), 3600L),
-        Utils.rem(Utils.divide((1.0 * seconds.longValue()), 60L), 60L),
+        Utils.div(seconds.longValue(), 3600L),
+        Utils.rem(Utils.div(seconds.longValue(), 60L), 60L),
         Utils.rem(seconds.longValue(), 60L));
   }
 
@@ -95,6 +85,35 @@ public class UberUtils {
 
       return "mk_UberUtils`Timestamp" + Utils.formatFields(hour, minute, second);
     }
+  }
+
+  public static Boolean inv_Timestamp(final Timestamp d) {
+
+    Boolean andResult_15 = false;
+
+    if (d.minute.longValue() >= 0L) {
+      Boolean andResult_16 = false;
+
+      if (d.minute.longValue() <= 59L) {
+        Boolean andResult_17 = false;
+
+        if (d.second.longValue() >= 0L) {
+          if (d.second.longValue() <= 59L) {
+            andResult_17 = true;
+          }
+        }
+
+        if (andResult_17) {
+          andResult_16 = true;
+        }
+      }
+
+      if (andResult_16) {
+        andResult_15 = true;
+      }
+    }
+
+    return andResult_15;
   }
 
   public static class Location implements Record {

@@ -1,0 +1,38 @@
+class Driver is subclass of User
+types
+    public Status = <Ready> | <ReachingClient> | <InTransit>;
+
+instance variables
+    -- a driver has a rating, a status, a speed (of their vehicle) and a current location
+    public rating: rat := 5;
+    public status: Status := <Ready>;
+    public speed: nat1;
+    public location: UberUtils`Location;
+
+operations
+  -- Driver Constructor
+    public Driver : String * nat1 * nat * nat ==> Driver
+        Driver(nm, spd, lat, lon) == (
+            name := nm;
+            speed := spd;
+            location := mk_UberUtils`Location(lat, lon, "Portugal");
+            return self
+        );
+    
+    -- Operations that change the Driver's state between READY, INTRANSIT and REACHING CLIENT
+    public setReady: () ==> ()
+        setReady() ==
+            status := <Ready>
+            pre status = <InTransit> or status = <ReachingClient>;
+        
+    public setReachingClient: () ==> ()
+        setReachingClient() ==
+            status := <ReachingClient>
+            pre status = <Ready>;
+    
+    public setInTransit: () ==> ()
+        setInTransit() ==
+            status := <InTransit>
+            pre status = <ReachingClient>;
+
+end Driver

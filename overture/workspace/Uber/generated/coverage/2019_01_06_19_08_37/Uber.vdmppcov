@@ -1,8 +1,5 @@
-\begin{vdmpp}[breaklines=true]
 class Uber
-/*
-  Defines the main class of the our program, that handles evrything related to our system
-*/
+
 types
     -- Redefinition of Util types for ease of reading and writing
     public Timestamp = UberUtils`Timestamp;
@@ -12,7 +9,7 @@ types
                      timeEnd: UberUtils`Timestamp
                      locationStart: UberUtils`Location
                      locationEnd: UberUtils`Location
-                     cost:UberUtils`Cost;
+                     cost:rat;
 
 instance variables
     -- sets of different Users that use the system.
@@ -20,89 +17,37 @@ instance variables
     public clients: set of Client := {};
     public admins: set of Admin := {};
 
-(*@
-\label{Uber:22}
-@*)
 operations
     -- class constructor
     public Uber:() ==> Uber
         Uber() ==
         return self;
-  
-(*@
-\label{registerDriver:28}
-@*)
-(*@
-\label{getDrivers:28}
-@*)
-  -- add Admin
-(*@
-\label{addAdmin:29}
-@*)
-  public addAdmin: Admin ==> set of Admin
-   addAdmin(a) == (
-    admins := {a} union admins; 
-(*@
-\label{getClients:32}
-@*)
-    return admins;
-   );
-  
-  
-(*@
-\label{getAdmins:36}
-@*)
-(*@
-\label{removeDriver:36}
-@*)
-  
-  /*ADMIN OPERATIONS*/
+
+    /*ADMIN OPERATIONS*/
     --registers a Driver in the system
-    public registerDriver: Admin * Driver ==> set of Driver
-        registerDriver(a, d) == (
+    public registerDriver: Driver ==> set of Driver
+        registerDriver(d) == (
             drivers := {d} union drivers;
             return drivers
         )    
-(*@
-\label{removeClient:44}
-@*)
-        pre (a in set admins and d not in set drivers);
+        pre (d not in set drivers);
     
-    -- resgisters multiple Drives
-(*@
-\label{registerDrivers:47}
-@*)
-    public registerDrivers: Admin * map seq of char to nat1 ==> ()
-      registerDrivers(a, driversMap) == (
-        drivers := { new Driver(name, driversMap(name), 0, 0) | name in set dom  driversMap};
-      ) 
-      pre (a in set admins);
-      
-(*@
-\label{registerClient:53}
-@*)
     --removes a Driver from the system
-    public removeDriver: Admin * Driver ==> set of Driver
-        removeDriver(a, d) == (
+    public removeDriver: Driver ==> set of Driver
+        removeDriver(d) == (
             drivers := {d} \ drivers;
             return drivers
         )    
-        pre (a in set admins and d in set drivers);
+        pre (d in set drivers);
 
-(*@
-\label{requestRide:61}
-@*)
     --removes a Client from the system
-    public removeClient: Admin * Client ==> set of Client
-        removeClient(a, c) == (
+    public removeClient: Client ==> set of Client
+        removeClient(c) == (
             clients := {c} \ clients;
             return clients
         )    
-        pre (a in set admins and c in set clients);
+        pre (c in set clients);
     
-(*@
-\label{goOnRide:69}
-@*)
     /*CLIENT OPERATIONS*/
     --registers a Client in the system
     public registerClient: Client ==> set of Client
@@ -112,32 +57,15 @@ operations
         )    
         pre (c not in set clients);
     
-(*@
-\label{cancelRide:78}
-@*)
-    -- a client requests a ride    
+    --a client requests a ride    
     public requestRide: Client ==> ()
         requestRide(c) == (
             c.setWaiting();
         )
         pre (exists d in set drivers & d.status = <Ready> and c in set clients and c.status = <Ready>)
-(*@
-\label{acceptRide:84}
-@*)
         post (c.status = <Waiting>);
         
-    -- a client cancels a ride 
-    public cancelRide: Client ==> ()
-      cancelRide(c) == (
-        c.setReady();
-      )
-      pre (c.status = <Waiting> and c in set clients)
-(*@
-\label{takeOnRide:92}
-@*)
-        post (c.status = <Ready>);
-        
-    -- a client enters the car and goes on a ride
+    --a client enters the car and goes on a ride
     public goOnRide: Client * Location * Timestamp * Driver ==> ()
         goOnRide(c, destination, initTime, d)==(
             dcl distance:rat, cost:rat, endTime:Timestamp, time:nat;
@@ -147,9 +75,9 @@ operations
             time := UberUtils`calculateTravelTime(d.speed, distance);
             cost := UberUtils`calculateCost(distance, time);
             endTime:=UberUtils`calculateTimestamp(UberUtils`calculateEndTime(initTime, time));
-            c.endTrip(mk_Report(initTime, endTime, c.location, destination, cost));
+            c.addReport(mk_Report(initTime, endTime, c.location, destination, cost));
         ) pre (c.status = <Waiting> and c in set clients) 
-        post (c.status = <Ready> and c.location = destination);
+        post (c.status = <Ready> and c in set clients and c.location = destination);
     
     /*DRIVER OPERATIONS*/
     -- a driver accepts a ride
@@ -160,13 +88,11 @@ operations
         pre (c in set clients and c.status = <Waiting> and d in set drivers and d.status = <Ready>)
         post (d.status=<ReachingClient> and d.location = c.location); 
     
-    -- a driver picks up a client and goes to their destination
+    --a driver picks up a client and goes to their destination
     public takeOnRide: Driver * Location ==> ()
-        takeOnRide(d, destination) == (
-         d.endTrip(destination);
-        )
+        takeOnRide(d, destination) ==
+            return
         pre (d.status = <ReachingClient> and d in set drivers)
-        post (d.status = <Ready> and d.location = destination);
+        post (d.status = <Ready> and d in set drivers and d.location = destination);
     
 end Uber
-\end{vdmpp}

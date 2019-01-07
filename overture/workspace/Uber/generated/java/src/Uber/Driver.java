@@ -24,9 +24,14 @@ public class Driver extends User {
     cg_init_Driver_1(nm, spd, lat, lon);
   }
 
-  public void setReady() {
+  public Object getStatus() {
 
-    status = Uber.quotes.ReadyQuote.getInstance();
+    return status;
+  }
+
+  public UberUtils.Location getLocation() {
+
+    return Utils.copy(location);
   }
 
   public void setReachingClient() {
@@ -34,9 +39,10 @@ public class Driver extends User {
     status = Uber.quotes.ReachingClientQuote.getInstance();
   }
 
-  public void setInTransit() {
+  public void endTrip(final UberUtils.Location destination) {
 
-    status = Uber.quotes.InTransitQuote.getInstance();
+    location = Utils.copy(destination);
+    status = Uber.quotes.ReadyQuote.getInstance();
   }
 
   public Driver() {}

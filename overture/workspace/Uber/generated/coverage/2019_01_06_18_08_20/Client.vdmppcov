@@ -1,0 +1,46 @@
+class Client is subclass of User
+/*
+	A client is a user that requests rides.
+*/
+types
+	public Status = <Ready> | <Waiting> | <InTransit>;
+	
+instance variables
+	public rating: rat := 5;
+	public status: Status := <Ready>;
+	public location: UberUtils`Location;
+	public reports: set of Uber`Report := {};
+
+operations
+  -- Client Constructor
+	public Client : String * nat * nat ==> Client
+		Client(nm, lat, lon) == (
+			name := nm;
+			location := mk_UberUtils`Location(lat, lon, "Portugal");
+			return self
+		);
+
+	-- Operations that change the Client's state
+	public setReady: () ==> ()
+		setReady() ==
+		status := <Ready>
+		pre status = <InTransit> or status = <Waiting>;
+		
+	public setWaiting: () ==> ()
+		setWaiting() ==
+			status := <Waiting>
+			pre status = <Ready>;
+	
+	public setInTransit: () ==> ()
+		setInTransit() ==
+			status := <InTransit>
+			pre status = <Waiting>;
+	
+	public addReport: Uber`Report ==> ()
+		addReport(rep) == (
+			reports := reports union {rep};
+		)	
+		pre (rep not in set reports)
+		post (rep in set reports);
+			
+end Client

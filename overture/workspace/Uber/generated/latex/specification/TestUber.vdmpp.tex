@@ -1,0 +1,265 @@
+\begin{vdmpp}[breaklines=true]
+class TestUber is subclass of MyTestCase
+
+operations
+
+ -- checks if a new Driver was correctly added to the UBER system
+(*@
+\label{testCreateDriver:6}
+@*)
+ -- REQUIREMENTS Tested: R04
+ public testCreateDriver : () ==> ()
+  testCreateDriver() == (
+    -- creates new UBER system
+    dcl u:Uber := new Uber();
+    
+    -- creates new driver
+   dcl d: Driver := new Driver("Antonio", 40, 0, 0);
+   
+   -- creates new admin
+   dcl a: Admin := new Admin("Admin");
+   
+   -- adds admin to the system
+   assertEqual({a}, u.addAdmin(a));
+(*@
+\label{testRemoveDriver:20}
+@*)
+   
+   -- verifies that driver was added to the system
+   assertEqual({d}, u.registerDriver(a, d)); 
+   
+  );
+  
+  -- checks if a Driver was correctly removed from the UBER system
+  -- REQUIREMENTS Tested: R05
+  public testRemoveDriver : () ==> ()
+   testRemoveDriver() == (
+    -- creates new UBER system
+     dcl u:Uber := new Uber();
+    
+     -- creates new driver
+     dcl d: Driver := new Driver("Antonio", 40, 0, 0);
+    
+(*@
+\label{testCreateAccount:36}
+@*)
+    -- creates new admin
+    dcl a: Admin := new Admin("Admin");
+   
+    -- adds admin to the system
+    assertEqual({a}, u.addAdmin(a));
+    
+    -- verifies that the driver was added to the system
+     assertEqual({d}, u.registerDriver(a, d));
+    
+    -- verifies that the driver was removed from the system
+    assertEqual(0, card u.removeDriver(a, d));   
+   );
+  
+  -- checks if a client can properly create a new account
+(*@
+\label{testRemoveClient:50}
+@*)
+  -- REQUIREMENTS Tested: R02
+  public testCreateAccount : () ==> ()
+   testCreateAccount() == (
+    -- creates new UBER system
+     dcl u:Uber := new Uber();
+     
+     -- creates new client
+     dcl c: Client := new Client("Barbara", 0, 0);
+     
+     -- verifies that client was properly registered
+     assertEqual({c}, u.registerClient(c));
+    
+   );
+  
+  -- checks that a client was properly removed
+  -- REQUIREMENTS Tested: R05 
+  public testRemoveClient : () ==> ()
+   testRemoveClient() == (
+    -- creates new UBER system
+(*@
+\label{testGoOnRide:69}
+@*)
+     dcl u:Uber := new Uber();
+     
+     -- creates new client
+     dcl c: Client := new Client("Barbara", 0, 0);
+     
+     -- creates new admin
+     dcl a: Admin := new Admin("Admin");
+   
+     -- adds admin to the system
+     assertEqual({a}, u.addAdmin(a));
+     
+     -- verifies that client was properly registered
+     assertEqual({c}, u.registerClient(c));
+     
+     -- verifies that client was properly removed
+     assertEqual({}, u.removeClient(a, c));
+     
+     
+   );
+  
+  -- verifies that a client can correctly go on a ride
+  -- REQUIREMENTS Tested: R01
+  public testGoOnRide : () ==> ()
+   testGoOnRide() == (
+    -- creates new UBER system
+     dcl u:Uber := new Uber();
+     
+     -- creates new client
+     dcl c: Client := new Client("Barbara", 0, 0);
+     
+     -- creates new driver
+    dcl d: Driver := new Driver("Antonio", 40, 0, 0);
+    
+    -- creates new admin
+     dcl a: Admin := new Admin("Admin");
+   
+     -- adds admin to the system
+     assertEqual({a}, u.addAdmin(a));
+     
+     -- verifies that client was properly registered
+     assertEqual({c}, u.registerClient(c));
+     
+     
+     
+      u.registerDrivers(a, {"Antonio" |-> 40});
+      
+(*@
+\label{testTakeOnRide:115}
+@*)
+      assertEqual(2, card u.registerDriver(a, d));
+     
+     -- client requests ride
+     u.requestRide(c);
+     
+     -- verifies that the client state is set to Waiting
+     assertEqual(<Waiting>, c.getStatus());
+     
+     -- driver accepts ride
+     u.acceptRide(d, c);
+     
+     -- verifies that the driver state is set to Reaching Client
+     assertEqual(<ReachingClient>, d.getStatus());
+     
+     -- client goes on a ride 
+     u.goOnRide(c, mk_UberUtils`Location(1, 1, "Portugal"), mk_UberUtils`Timestamp(0, 0, 0), d);
+    
+    -- verifies that a client state is set to ready after the end of its trip
+    assertEqual(<Ready>, c.getStatus());
+    
+    -- verifies that the client location is equal to the destination
+    assertEqual(mk_UberUtils`Location(1, 1, "Portugal"), c.getLocation());
+    
+    -- verifies that the starting time of a trip precedes its ending time
+    for all report in set c.getReports() do(
+     assertTrue(report.timeStart.hour <= report.timeEnd.hour);
+    )
+   );
+   
+   -- verifies that a driver can correctly take on a ride
+   -- REQUIREMENTS Tested: R03
+  public testTakeOnRide : () ==> ()
+   testTakeOnRide() == (
+    -- creates new UBER system
+     dcl u:Uber := new Uber();
+     
+     -- creates new client
+     dcl c: Client := new Client("Barbara", 0, 0);
+     
+     -- creates new driver
+    dcl d: Driver := new Driver("Antonio", 40, 0, 0);
+    
+    -- creates new admin
+(*@
+\label{testAll:158}
+@*)
+     dcl a: Admin := new Admin("Admin");
+   
+     -- adds admin to the system
+     assertEqual({a}, u.addAdmin(a));
+     
+     -- verifies that client was properly registered
+     assertEqual({c}, u.registerClient(c));
+     
+     -- verifies that the driver was added to the system
+     assertEqual({d}, u.registerDriver(a, d));
+     
+     -- client requests ride
+     u.requestRide(c);
+     
+     -- verifies that the client state is set to Waiting
+     assertEqual(<Waiting>, c.getStatus());
+     
+     -- driver accepts ride
+     u.acceptRide(d, c);
+     
+     -- verifies that the driver state is set to Reaching Client
+     assertEqual(<ReachingClient>, d.getStatus());
+     
+     -- client goes on a ride 
+     u.takeOnRide(d, mk_UberUtils`Location(1, 1, "Portugal"));
+    
+    -- verifies that a client state is set to ready after the end of its trip
+    assertEqual(<Ready>, d.getStatus());
+    
+    -- verifies that the client location is equal to the destination
+    assertEqual(mk_UberUtils`Location(1, 1, "Portugal"), d.getLocation());
+    
+    
+   );
+(*@
+\label{testCancelRide:192}
+@*)
+   
+   -- verifies that a client can cancel a ride
+   -- REQUIREMENTS Tested: R06
+   public testCancelRide : () ==> ()
+    testCancelRide() == (
+     -- creates new UBER system
+      dcl u:Uber := new Uber();
+     
+      -- creates new client
+      dcl c: Client := new Client("Barbara", 0, 0);
+     
+      -- creates new driver
+     dcl d: Driver := new Driver("Antonio", 40, 0, 0);
+     
+     -- creates new admin
+       dcl a: Admin := new Admin("Admin");
+   
+       -- adds admin to the system
+       assertEqual({a}, u.addAdmin(a));
+     
+      -- verifies that client was properly registered
+      assertEqual({c}, u.registerClient(c));
+     
+      -- verifies that the driver was added to the system
+      assertEqual({d}, u.registerDriver(a, d));
+     
+      -- client requests ride
+      u.requestRide(c);
+      
+      --client cancels ride
+      u.cancelRide(c);
+      assertEqual(<Ready>, c.getStatus());
+    );
+  
+  -- runs all the tests
+  public testAll : () ==> ()
+   testAll() == (
+    testCreateDriver();
+    testRemoveDriver();
+    testCreateAccount();
+    testRemoveClient();
+    testGoOnRide();
+    testTakeOnRide();
+    testCancelRide();
+   ); 
+
+
+end TestUber
+\end{vdmpp}

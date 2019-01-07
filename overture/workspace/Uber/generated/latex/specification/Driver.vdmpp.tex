@@ -1,7 +1,10 @@
 \begin{vdmpp}[breaklines=true]
 class Driver is subclass of User
+/*
+  Defines a Driver, an Uber employee that performs the rides
+*/
 types
-    public Status = <Ready> | <ReachingClient> | <InTransit>;
+    public Status = <Ready> | <ReachingClient>;
 
 instance variables
     -- a driver has a rating, a status, a speed (of their vehicle) and a current location
@@ -9,11 +12,11 @@ instance variables
     public status: Status := <Ready>;
     public speed: nat1;
     public location: UberUtils`Location;
+(*@
+\label{Driver:14}
+@*)
 
 operations
-(*@
-\label{Driver:13}
-@*)
   -- Driver Constructor
     public Driver : String * nat1 * nat * nat ==> Driver
         Driver(nm, spd, lat, lon) == (
@@ -21,55 +24,47 @@ operations
             speed := spd;
             location := mk_UberUtils`Location(lat, lon, "Portugal");
             return self
-        );
-    /*GET METHODS*/
 (*@
-\label{setReady:22}
+\label{setReady:23}
 @*)
-  -- gets Status
 (*@
 \label{getStatus:23}
 @*)
+        );
+    /*GET METHODS*/
+  -- gets Status
   pure public getStatus: () ==> Status
-  getStatus() == return status;
-  
-   -- gets Location
 (*@
 \label{getLocation:27}
 @*)
+  getStatus() == return status;
 (*@
-\label{setReachingClient:27}
+\label{setReachingClient:28}
 @*)
+  
+   -- gets Location
   pure public getLocation: () ==> UberUtils`Location
   getLocation() == return location;
   
-    -- Operations that change the Driver's state between READY, INTRANSIT and REACHING CLIENT
-    public setReady: () ==> ()
 (*@
-\label{setInTransit:32}
+\label{setInTransit:33}
 @*)
-        setReady() ==
-            status := <Ready>
-            pre status = <InTransit> or status = <ReachingClient>;
-        
+    -- sets status to "Reaching Clients    
     public setReachingClient: () ==> ()
         setReachingClient() ==
             status := <ReachingClient>
             pre status = <Ready>;
     
-    public setInTransit: () ==> ()
-(*@
-\label{endTrip:42}
-@*)
-        setInTransit() ==
-            status := <InTransit>
-            pre status = <ReachingClient>;
-    
+    -- Handles the end of a trip for driver.
+    -- Sets Driver status to Ready and its location to the final destination.
     public endTrip: UberUtils`Location ==> ()
       endTrip(destination) == (
         location := destination;
         status := <Ready>;
       )
+(*@
+\label{endTrip:46}
+@*)
 
 end Driver
 \end{vdmpp}

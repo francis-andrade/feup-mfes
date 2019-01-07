@@ -22,6 +22,21 @@ public class Client extends User {
     cg_init_Client_1(nm, lat, lon);
   }
 
+  public Object getStatus() {
+
+    return status;
+  }
+
+  public UberUtils.Location getLocation() {
+
+    return Utils.copy(location);
+  }
+
+  public VDMSet getReports() {
+
+    return Utils.copy(reports);
+  }
+
   public void setReady() {
 
     status = Uber.quotes.ReadyQuote.getInstance();
@@ -32,14 +47,11 @@ public class Client extends User {
     status = Uber.quotes.WaitingQuote.getInstance();
   }
 
-  public void setInTransit() {
-
-    status = Uber.quotes.InTransitQuote.getInstance();
-  }
-
-  public void addReport(final Uber.Report rep) {
+  public void endTrip(final Uber.Report rep) {
 
     reports = SetUtil.union(Utils.copy(reports), SetUtil.set(Utils.copy(rep)));
+    location = Utils.copy(rep.locationEnd);
+    status = Uber.quotes.ReadyQuote.getInstance();
   }
 
   public Client() {}

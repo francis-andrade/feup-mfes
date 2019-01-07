@@ -19,19 +19,36 @@ public class Uber {
     cg_init_Uber_1();
   }
 
-  public VDMSet registerDriver(final Driver d) {
+  public VDMSet addAdmin(final Admin a) {
+
+    admins = SetUtil.union(SetUtil.set(a), Utils.copy(admins));
+    return Utils.copy(admins);
+  }
+
+  public VDMSet registerDriver(final Admin a, final Driver d) {
 
     drivers = SetUtil.union(SetUtil.set(d), Utils.copy(drivers));
     return Utils.copy(drivers);
   }
 
-  public VDMSet removeDriver(final Driver d) {
+  public void registerDrivers(final Admin a, final VDMMap driversMap) {
+
+    VDMSet setCompResult_1 = SetUtil.set();
+    VDMSet set_1 = MapUtil.dom(Utils.copy(driversMap));
+    for (Iterator iterator_1 = set_1.iterator(); iterator_1.hasNext(); ) {
+      String name = ((String) iterator_1.next());
+      setCompResult_1.add(new Driver(name, ((Number) Utils.get(driversMap, name)), 0L, 0L));
+    }
+    drivers = Utils.copy(setCompResult_1);
+  }
+
+  public VDMSet removeDriver(final Admin a, final Driver d) {
 
     drivers = SetUtil.diff(SetUtil.set(d), Utils.copy(drivers));
     return Utils.copy(drivers);
   }
 
-  public VDMSet removeClient(final Client c) {
+  public VDMSet removeClient(final Admin a, final Client c) {
 
     clients = SetUtil.diff(SetUtil.set(c), Utils.copy(clients));
     return Utils.copy(clients);
@@ -48,6 +65,11 @@ public class Uber {
     c.setWaiting();
   }
 
+  public void cancelRide(final Client c) {
+
+    c.setReady();
+  }
+
   public void goOnRide(
       final Client c,
       final UberUtils.Location destination,
@@ -62,7 +84,7 @@ public class Uber {
     time = UberUtils.calculateTravelTime(d.speed, distance);
     cost = UberUtils.calculateCost(distance, time);
     endTime = UberUtils.calculateTimestamp(UberUtils.calculateEndTime(Utils.copy(initTime), time));
-    c.addReport(new Report(initTime, endTime, c.location, destination, cost));
+    c.endTrip(new Report(initTime, endTime, c.location, destination, cost));
   }
 
   public void acceptRide(final Driver d, final Client c) {
@@ -72,7 +94,7 @@ public class Uber {
 
   public void takeOnRide(final Driver d, final UberUtils.Location destination) {
 
-    return;
+    d.endTrip(Utils.copy(destination));
   }
 
   public String toString() {

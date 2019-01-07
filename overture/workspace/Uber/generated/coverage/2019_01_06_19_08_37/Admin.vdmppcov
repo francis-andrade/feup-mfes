@@ -1,13 +1,7 @@
-\begin{vdmpp}[breaklines=true]
 class Admin is subclass of User
-/*
-  Defines an Admin of the system
-*/
-(*@
-\label{Admin:5}
-@*)
+
 operations
-    -- Admin constructor
+    --creates an admin
     public Admin : String ==> Admin
         Admin(nm) == (
             name := nm;
@@ -15,4 +9,3 @@ operations
         );
 
 end Admin
-\end{vdmpp}
