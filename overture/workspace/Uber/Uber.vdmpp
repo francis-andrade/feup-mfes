@@ -32,6 +32,8 @@ operations
 				return admins;
 			);
 		
+		
+		
 		/*ADMIN OPERATIONS*/
     --registers a Driver in the system
     public registerDriver: Admin * Driver ==> set of Driver
@@ -41,6 +43,13 @@ operations
         )    
         pre (a in set admins and d not in set drivers);
     
+    -- resgisters multiple Drives
+    public registerDrivers: Admin * map seq of char to nat1 ==> ()
+    		registerDrivers(a, driversMap) == (
+    				drivers := { new Driver(name, driversMap(name), 0, 0) | name in set dom  driversMap};
+    		)	
+    		pre (a in set admins);
+    		
     --removes a Driver from the system
     public removeDriver: Admin * Driver ==> set of Driver
         removeDriver(a, d) == (

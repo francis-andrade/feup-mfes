@@ -31,7 +31,7 @@ operations
 		  	dcl u:Uber := new Uber();
 		  
 		  	-- creates new driver
-				dcl d: Driver := new Driver("Antonio", 40, 0, 0);
+			  dcl d: Driver := new Driver("Antonio", 40, 0, 0);
 				
 				-- creates new admin
 				dcl a: Admin := new Admin("Admin");
@@ -39,7 +39,7 @@ operations
 				-- adds admin to the system
 				assertEqual({a}, u.addAdmin(a));
 				
-				-- verifies that driver was added to the system
+			 -- verifies that the driver was added to the system
 			  assertEqual({d}, u.registerDriver(a, d));
 				
 				-- verifies that the driver was removed from the system
@@ -61,7 +61,7 @@ operations
 				
 			);
 		
-		--checks that a client was properly removed
+		-- checks that a client was properly removed
 		-- REQUIREMENTS Tested: R05	
 		public testRemoveClient : () ==> ()
 			testRemoveClient() == (
@@ -108,8 +108,11 @@ operations
 		  	-- verifies that client was properly registered
 		  	assertEqual({c}, u.registerClient(c));
 		  	
-		  	-- verifies that the driver was added to the system
-			  assertEqual({d}, u.registerDriver(a, d));
+		  	
+			  
+			   u.registerDrivers(a, {"Antonio" |-> 40});
+			   
+			   assertEqual(2, card u.registerDriver(a, d));
 			  
 			  -- client requests ride
 			  u.requestRide(c);
