@@ -19,15 +19,6 @@ types
                        country: seq1 of char;
 
 functions
-    -- calculates the amount of seconds between two timestamps.
-    -- the first argument must be earlier than the second one.
-    public timeBetween : Timestamp * Timestamp -> nat
-        timeBetween(timeS, timeE) == 
-            (timeE.hour *1440 + timeE.minute * 60 + timeE.second) 
-                    - (timeS.hour *1440 + timeS.minute * 60 + timeS.second)
-        pre timeE.hour > timeS.hour or (timeE.hour = timeS.hour and 
-                    (timeE.minute > timeS.minute or (timeE.minute = timeS.minute 
-                    and timeE.second > timeS.second)));
     
     -- calculates the cost of a trip.
     public calculateCost: rat * nat -> rat

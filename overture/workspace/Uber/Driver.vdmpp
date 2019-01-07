@@ -1,6 +1,6 @@
 class Driver is subclass of User
 types
-    public Status = <Ready> | <ReachingClient> | <InTransit>;
+    public Status = <Ready> | <ReachingClient>;
 
 instance variables
     -- a driver has a rating, a status, a speed (of their vehicle) and a current location
@@ -27,21 +27,12 @@ operations
 		pure public getLocation: () ==> UberUtils`Location
 		getLocation() == return location;
 		
-    -- Operations that change the Driver's state between READY, INTRANSIT and REACHING CLIENT
-    public setReady: () ==> ()
-        setReady() ==
-            status := <Ready>
-            pre status = <InTransit> or status = <ReachingClient>;
         
     public setReachingClient: () ==> ()
         setReachingClient() ==
             status := <ReachingClient>
             pre status = <Ready>;
     
-    public setInTransit: () ==> ()
-        setInTransit() ==
-            status := <InTransit>
-            pre status = <ReachingClient>;
     
     public endTrip: UberUtils`Location ==> ()
     		endTrip(destination) == (

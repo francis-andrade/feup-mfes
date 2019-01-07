@@ -8,7 +8,15 @@ types
     public String = seq of char;
 
 instance variables
+(*@
+\label{getName:10}
+@*)
     public name: String;
+
+operations
+ -- gets name
+ pure public getName: () ==> String
+  getName() == return name;
 
 end User
 \end{vdmpp}

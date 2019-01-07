@@ -3,7 +3,7 @@ class Client is subclass of User
     A client is a user that requests rides.
 */
 types
-    public Status = <Ready> | <Waiting> | <InTransit>;
+    public Status = <Ready> | <Waiting> ;
     
 instance variables
     -- a client has a rating, a status, a current location and a set of trip reports.
@@ -38,17 +38,13 @@ operations
     public setReady: () ==> ()
         setReady() ==
         status := <Ready>
-        pre status = <InTransit> or status = <Waiting>;
+        pre status = <Waiting>;
         
     public setWaiting: () ==> ()
         setWaiting() ==
             status := <Waiting>
             pre status = <Ready>;
     
-    public setInTransit: () ==> ()
-        setInTransit() ==
-            status := <InTransit>
-            pre status = <Waiting>;
     
     -- adds a report to their report set
     public endTrip: Uber`Report ==> ()

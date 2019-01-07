@@ -22,44 +22,38 @@ operations
     public Uber:() ==> Uber
         Uber() ==
         return self;
-		/*GET METHODS*/
 		
-		-- gets Drivers
-		pure public getDrivers: () ==> set of Driver
-		getDrivers() == return drivers;
+		-- add Admin
+		public addAdmin: Admin ==> set of Admin
+			addAdmin(a) == (
+				admins := {a} union admins; 
+				return admins;
+			);
 		
-		-- gets Clients
-		pure public getClients: () ==> set of Client
-		getClients() == return clients;
-		
-		-- gets Admins
-		pure public getAdmins: () ==> set of Admin
-		getAdmins() == return admins;
-		
-    /*ADMIN OPERATIONS*/
+		/*ADMIN OPERATIONS*/
     --registers a Driver in the system
-    public registerDriver: Driver ==> set of Driver
-        registerDriver(d) == (
+    public registerDriver: Admin * Driver ==> set of Driver
+        registerDriver(a, d) == (
             drivers := {d} union drivers;
             return drivers
         )    
-        pre (d not in set drivers);
+        pre (a in set admins and d not in set drivers);
     
     --removes a Driver from the system
-    public removeDriver: Driver ==> set of Driver
-        removeDriver(d) == (
+    public removeDriver: Admin * Driver ==> set of Driver
+        removeDriver(a, d) == (
             drivers := {d} \ drivers;
             return drivers
         )    
-        pre (d in set drivers);
+        pre (a in set admins and d in set drivers);
 
     --removes a Client from the system
-    public removeClient: Client ==> set of Client
-        removeClient(c) == (
+    public removeClient: Admin * Client ==> set of Client
+        removeClient(a, c) == (
             clients := {c} \ clients;
             return clients
         )    
-        pre (c in set clients);
+        pre (a in set admins and c in set clients);
     
     /*CLIENT OPERATIONS*/
     --registers a Client in the system
@@ -77,6 +71,14 @@ operations
         )
         pre (exists d in set drivers & d.status = <Ready> and c in set clients and c.status = <Ready>)
         post (c.status = <Waiting>);
+        
+    -- a client cancels a ride 
+    public cancelRide: Client ==> ()
+    		cancelRide(c) == (
+    				c.setReady();
+    		)
+    		pre (c.status = <Waiting> and c in set clients)
+        post (c.status = <Ready>);
         
     -- a client enters the car and goes on a ride
     public goOnRide: Client * Location * Timestamp * Driver ==> ()

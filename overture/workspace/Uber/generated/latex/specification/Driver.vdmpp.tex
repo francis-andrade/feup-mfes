@@ -22,31 +22,54 @@ operations
             location := mk_UberUtils`Location(lat, lon, "Portugal");
             return self
         );
-    
+    /*GET METHODS*/
 (*@
 \label{setReady:22}
 @*)
-    -- Operations that change the Driver's state between READY, INTRANSIT and REACHING CLIENT
-    public setReady: () ==> ()
-        setReady() ==
-            status := <Ready>
-            pre status = <InTransit> or status = <ReachingClient>;
+  -- gets Status
+(*@
+\label{getStatus:23}
+@*)
+  pure public getStatus: () ==> Status
+  getStatus() == return status;
+  
+   -- gets Location
+(*@
+\label{getLocation:27}
+@*)
 (*@
 \label{setReachingClient:27}
 @*)
+  pure public getLocation: () ==> UberUtils`Location
+  getLocation() == return location;
+  
+    -- Operations that change the Driver's state between READY, INTRANSIT and REACHING CLIENT
+    public setReady: () ==> ()
+(*@
+\label{setInTransit:32}
+@*)
+        setReady() ==
+            status := <Ready>
+            pre status = <InTransit> or status = <ReachingClient>;
         
     public setReachingClient: () ==> ()
         setReachingClient() ==
             status := <ReachingClient>
             pre status = <Ready>;
-(*@
-\label{setInTransit:32}
-@*)
     
     public setInTransit: () ==> ()
+(*@
+\label{endTrip:42}
+@*)
         setInTransit() ==
             status := <InTransit>
             pre status = <ReachingClient>;
+    
+    public endTrip: UberUtils`Location ==> ()
+      endTrip(destination) == (
+        location := destination;
+        status := <Ready>;
+      )
 
 end Driver
 \end{vdmpp}

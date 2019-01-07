@@ -10,7 +10,7 @@ types
                      timeEnd: UberUtils`Timestamp
                      locationStart: UberUtils`Location
                      locationEnd: UberUtils`Location
-                     cost:rat;
+                     cost:UberUtils`Cost;
 
 instance variables
     -- sets of different Users that use the system.
@@ -22,14 +22,45 @@ instance variables
 @*)
 
 operations
+(*@
+\label{registerDriver:21}
+@*)
     -- class constructor
     public Uber:() ==> Uber
+(*@
+\label{getDrivers:23}
+@*)
         Uber() ==
         return self;
+  /*GET METHODS*/
+  
 (*@
-\label{registerDriver:25}
+\label{getStatus:27}
 @*)
-
+  -- gets Drivers
+(*@
+\label{getClients:28}
+@*)
+  pure public getDrivers: () ==> set of Driver
+(*@
+\label{removeDriver:29}
+@*)
+  getDrivers() == return drivers;
+  
+  -- gets Clients
+(*@
+\label{getAdmins:32}
+@*)
+  pure public getClients: () ==> set of Client
+  getClients() == return clients;
+  
+  -- gets Admins
+  pure public getAdmins: () ==> set of Admin
+(*@
+\label{removeClient:37}
+@*)
+  getAdmins() == return admins;
+  
     /*ADMIN OPERATIONS*/
     --registers a Driver in the system
     public registerDriver: Driver ==> set of Driver
@@ -38,7 +69,7 @@ operations
             return drivers
         )    
 (*@
-\label{removeDriver:33}
+\label{registerClient:46}
 @*)
         pre (d not in set drivers);
     
@@ -49,7 +80,7 @@ operations
             return drivers
         )    
 (*@
-\label{removeClient:41}
+\label{requestRide:54}
 @*)
         pre (d in set drivers);
 
@@ -59,10 +90,10 @@ operations
             clients := {c} \ clients;
             return clients
         )    
-        pre (c in set clients);
 (*@
-\label{registerClient:50}
+\label{goOnRide:62}
 @*)
+        pre (c in set clients);
     
     /*CLIENT OPERATIONS*/
     --registers a Client in the system
@@ -71,23 +102,34 @@ operations
             clients := {c} union clients;
             return clients
         )    
-(*@
-\label{requestRide:58}
-@*)
         pre (c not in set clients);
     
-    --a client requests a ride    
+    -- a client requests a ride    
     public requestRide: Client ==> ()
         requestRide(c) == (
+(*@
+\label{acceptRide:76}
+@*)
             c.setWaiting();
         )
         pre (exists d in set drivers & d.status = <Ready> and c in set clients and c.status = <Ready>)
-(*@
-\label{goOnRide:66}
-@*)
         post (c.status = <Waiting>);
         
-    --a client enters the car and goes on a ride
+    -- a client cancels a ride 
+(*@
+\label{cancelRide:82}
+@*)
+    public cancelRide: Client ==> ()
+(*@
+\label{takeOnRide:83}
+@*)
+      cancelRide(c) == (
+        c.setReady();
+      )
+      pre (c.status = <Waiting> and c in set clients)
+        post (c.status = <Ready>);
+        
+    -- a client enters the car and goes on a ride
     public goOnRide: Client * Location * Timestamp * Driver ==> ()
         goOnRide(c, destination, initTime, d)==(
             dcl distance:rat, cost:rat, endTime:Timestamp, time:nat;
@@ -97,31 +139,26 @@ operations
             time := UberUtils`calculateTravelTime(d.speed, distance);
             cost := UberUtils`calculateCost(distance, time);
             endTime:=UberUtils`calculateTimestamp(UberUtils`calculateEndTime(initTime, time));
-            c.addReport(mk_Report(initTime, endTime, c.location, destination, cost));
+            c.endTrip(mk_Report(initTime, endTime, c.location, destination, cost));
         ) pre (c.status = <Waiting> and c in set clients) 
-(*@
-\label{acceptRide:80}
-@*)
-        post (c.status = <Ready> and c in set clients and c.location = destination);
+        post (c.status = <Ready> and c.location = destination);
     
     /*DRIVER OPERATIONS*/
     -- a driver accepts a ride
     public acceptRide: Driver * Client ==>()
         acceptRide(d, c) == (
             d.setReachingClient();
-(*@
-\label{takeOnRide:87}
-@*)
         )    
         pre (c in set clients and c.status = <Waiting> and d in set drivers and d.status = <Ready>)
         post (d.status=<ReachingClient> and d.location = c.location); 
     
-    --a driver picks up a client and goes to their destination
+    -- a driver picks up a client and goes to their destination
     public takeOnRide: Driver * Location ==> ()
-        takeOnRide(d, destination) ==
-            return
+        takeOnRide(d, destination) == (
+         d.endTrip(destination);
+        )
         pre (d.status = <ReachingClient> and d in set drivers)
-        post (d.status = <Ready> and d in set drivers and d.location = destination);
+        post (d.status = <Ready> and d.location = destination);
     
 end Uber
 \end{vdmpp}
