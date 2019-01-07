@@ -28,7 +28,8 @@ functions
     -- calculates the distance between two locations based off their coordinates.
     public calculateDistance: Location * Location -> rat    
         calculateDistance(localS, localD) ==
-            ((localS.latitude - localD.latitude) ** 2 + (localS.longitude - localD.longitude) ** 2) ** 0.5;
+            ((localS.latitude - localD.latitude) ** 2 + (localS.longitude - localD.longitude) ** 2) ** 0.5
+        post (RESULT >= 0);
     
     -- calculates the end time of a trip based on the starting timestamp 
     -- and the amount of seconds the trip took.        
