@@ -14,11 +14,6 @@
     </ATTRIBUTES>
     <DEPENDENCIES>
       <COMP relation="OwnedElement">
-        <COMPID name="Car" mc="Standard.Class" uid="560244bb-b7b8-4c34-afa0-f2dcaab425cf"/>
-        <COMPID name="Trip" mc="Standard.Class" uid="314358cd-ad70-4513-b19b-6b0f385626f9"/>
-        <COMPID name="Client" mc="Standard.Class" uid="a7595dd3-5603-44ed-8a28-0cc88884ce0b"/>
-        <COMPID name="Report" mc="Standard.Class" uid="2d6e670e-7e1e-4d65-9493-556d34c401a1"/>
-        <COMPID name="Location" mc="Standard.Class" uid="63451ea3-2c19-4576-896a-8d5e9e9283b8"/>
         <COMPID name="admin" mc="Standard.Actor" uid="76c911af-84b1-4e58-b8d4-c1b880a7a05b"/>
         <COMPID name="client" mc="Standard.Actor" uid="a5a9223b-7639-412a-ac92-eb86732e4f29"/>
         <COMPID name="driver" mc="Standard.Actor" uid="f1169817-cb2e-42ba-b45c-1e57093be6ef"/>
@@ -28,11 +23,6 @@
         <COMPID name="Add Driver" mc="Standard.UseCase" uid="02005ff7-efb7-443c-80f5-7c3ae04b70ac"/>
         <COMPID name="Remove Driver" mc="Standard.UseCase" uid="c472f220-d4f8-4fce-bf05-86befea734da"/>
         <COMPID name="Remove Client" mc="Standard.UseCase" uid="10efeef0-061d-4ff2-a72c-9aa15bee6355"/>
-        <COMPID name="Uber" mc="Standard.Class" uid="f4118beb-4909-454c-a3f9-b1a108482859"/>
-        <COMPID name="Driver" mc="Standard.Class" uid="f9c07fdd-052d-4143-981e-207de4a5c38f"/>
-        <COMPID name="User" mc="Standard.Class" uid="b1f510d5-5c9f-4cfd-b0ec-d009490f8c11"/>
-        <COMPID name="Admin" mc="Standard.Class" uid="1af61ead-c0c8-4ba2-8fff-7cde9cbdf06e"/>
-        <COMPID name="Timestamp" mc="Standard.Class" uid="08d306f3-3243-44b0-82c0-90d6b8b348a8"/>
         <COMPID name="Cancel" mc="Standard.UseCase" uid="e152cabb-f9e1-4cfc-b67e-d22cbb3ea88e"/>
         <COMPID name="Give Location" mc="Standard.UseCase" uid="f65fcbcc-058b-41c1-a6d6-90f0c98cb4bf"/>
         <COMPID name="Give Time" mc="Standard.UseCase" uid="a485b63e-5bbd-45a8-8726-2e6d2216620f"/>
