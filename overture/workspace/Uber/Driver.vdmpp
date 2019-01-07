@@ -1,4 +1,7 @@
 class Driver is subclass of User
+/*
+		Defines a Driver, an Uber employee that performs the rides
+*/
 types
     public Status = <Ready> | <ReachingClient>;
 
@@ -27,13 +30,14 @@ operations
 		pure public getLocation: () ==> UberUtils`Location
 		getLocation() == return location;
 		
-        
+    -- sets status to "Reaching Clients    
     public setReachingClient: () ==> ()
         setReachingClient() ==
             status := <ReachingClient>
             pre status = <Ready>;
     
-    
+    -- Handles the end of a trip for driver.
+    -- Sets Driver status to Ready and its location to the final destination.
     public endTrip: UberUtils`Location ==> ()
     		endTrip(destination) == (
     				location := destination;

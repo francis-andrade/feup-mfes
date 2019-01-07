@@ -1,5 +1,7 @@
 class Uber
-
+/*
+		Defines the main class of the our program, that handles evrything related to our system
+*/
 types
     -- Redefinition of Util types for ease of reading and writing
     public Timestamp = UberUtils`Timestamp;

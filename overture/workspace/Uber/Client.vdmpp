@@ -34,12 +34,17 @@ operations
 		pure public getReports: () ==> set of Uber`Report
 		getReports() == return reports;
 		
-    -- Operations that change the Client's state
+   /*
+   Operations that change the Client's state
+   */ 
+    
+    -- sets the state to ready
     public setReady: () ==> ()
         setReady() ==
         status := <Ready>
         pre status = <Waiting>;
-        
+    
+    -- sets the state to waiting    
     public setWaiting: () ==> ()
         setWaiting() ==
             status := <Waiting>

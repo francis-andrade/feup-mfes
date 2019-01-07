@@ -1,7 +1,9 @@
 class Admin is subclass of User
-
+/*
+		Defines an Admin of the system
+*/
 operations
-    --creates an admin
+    -- Admin constructor
     public Admin : String ==> Admin
         Admin(nm) == (
             name := nm;
