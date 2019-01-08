@@ -1,5 +1,11 @@
 package uber;
 
+import org.overture.codegen.runtime.VDMSet;
+import uber.quotes.ReachingClientQuote;
+import uber.quotes.WaitingQuote;
+
+import java.util.Iterator;
+
 public class Main {
 
     private static Uber uber = new Uber();
@@ -36,15 +42,14 @@ public class Main {
 
     public static void addClient(Interface cli){
         Client c = cli.printAddClient();
-        uber.registerClient(c);
-        cli.printClients(uber.clients);
-
+        VDMSet clients = uber.registerClient(c);
+        cli.printClients(clients);
     }
 
     public static void addDriver(Interface cli){
         Driver d = cli.printAddDriver();
-        uber.registerDriver(new Admin("admin"), d);
-        cli.printDrivers(uber.drivers);
+        VDMSet drivers = uber.registerDriver(new Admin("admin"), d);
+        cli.printDrivers(drivers);
     }
 
     public static void removeClient(Interface cli){
@@ -58,11 +63,47 @@ public class Main {
     }
 
     public static void goOnRide(Interface cli){
+        Client c = cli.requestRide(uber.clients);
+        uber.requestRide(c);
 
+        int lat = cli.requestLatitude();
+        int lon = cli.requestLongitude();
+        UberUtils.Location loc = new UberUtils.Location(lat, lon, "Portugal");
+        UberUtils.Timestamp t = cli.requestTime();
+        Driver d = getReachingDriver();
+
+        uber.goOnRide(c, loc, t, d);
+    }
+
+    private static Driver getReachingDriver() {
+        Iterator it = uber.drivers.iterator();
+        Driver d = null;
+        while(it.hasNext()){
+            d = (Driver) it.next();
+            if (d.status instanceof ReachingClientQuote){
+                return d;
+            }
+        }
+        return null;
+    }
+
+    private static Client getAvailableClient(){
+        Iterator it = uber.clients.iterator();
+        Client c = null;
+        while(it.hasNext()){
+            c = (Client) it.next();
+            if (c.status instanceof WaitingQuote){
+                return c;
+            }
+        }
+        return null;
     }
 
     public static void takeOnRide(Interface cli){
-
+        Driver d = cli.takeOnRide(uber.drivers);
+        Client c = getAvailableClient();
+        uber.acceptRide(d, c);
+        uber.takeOnRide(d, c.location);
     }
 
     public Uber getUber(){
