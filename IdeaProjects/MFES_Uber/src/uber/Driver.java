@@ -1,11 +1,11 @@
-package Uber;
+package uber;
 
 import org.overture.codegen.runtime.*;
 
 @SuppressWarnings("all")
 public class Driver extends User {
   public Number rating = 5L;
-  public Object status = Uber.quotes.ReadyQuote.getInstance();
+  public Object status = uber.quotes.ReadyQuote.getInstance();
   public Number speed;
   public UberUtils.Location location;
 
@@ -35,13 +35,13 @@ public class Driver extends User {
 
   public void setReachingClient() {
 
-    status = Uber.quotes.ReachingClientQuote.getInstance();
+    status = uber.quotes.ReachingClientQuote.getInstance();
   }
 
   public void endTrip(final UberUtils.Location destination) {
 
     location = Utils.copy(destination);
-    status = Uber.quotes.ReadyQuote.getInstance();
+    status = uber.quotes.ReadyQuote.getInstance();
   }
 
   public Driver() {}

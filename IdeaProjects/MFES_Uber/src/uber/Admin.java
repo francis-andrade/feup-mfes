@@ -1,7 +1,4 @@
-package Uber;
-
-import java.util.*;
-import org.overture.codegen.runtime.*;
+package uber;
 
 @SuppressWarnings("all")
 public class Admin extends User {

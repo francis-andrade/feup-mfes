@@ -1,4 +1,4 @@
-package Uber.quotes;
+package uber.quotes;
 
 import org.overture.codegen.runtime.*;
 
